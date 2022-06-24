@@ -27,6 +27,9 @@ app.get('/dashboard', (req, res)=>{
 app.get('/nhf-dashboard', (req, res)=>{
     res.render('nhf-dashboard');
 });
+app.get('/giz-dashboard', (req, res)=>{
+    res.render('giz-dashboard');
+});
 app.get('/create-project', (req, res)=>{
     res.render('createproject');
 });
