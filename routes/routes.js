@@ -19,7 +19,7 @@ router.use(bodyParser.json())
 
 router.post('/register',  postUser);
 router.post('/login', postLogin);
-router.post('/create-project', postProjectInfo);
+router.post('/create', postProjectInfo);
 router.post('/create-indicator', postIndicators);
 
 

@@ -30,7 +30,7 @@ app.get('/nhf-dashboard', (req, res)=>{
 app.get('/create-project', (req, res)=>{
     res.render('createproject');
 });
-app.get('/add-indicator', (req, res)=>{
+app.get('/create-indicator', (req, res)=>{
     res.render('add-indicator');
 });
 app.get('/indicators', (req, res)=>{

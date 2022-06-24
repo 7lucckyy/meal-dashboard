@@ -13,35 +13,39 @@
         <!-- Sign Up Start -->
         <div class="container-fluid">
             <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
+            
                 <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
                     <div class="bg-secondary rounded p-4 p-sm-5 my-4 mx-3">
                         <div class="d-flex align-items-center justify-content-between mb-3">
                             
                             <h3 class="tetx-center">Create Project</h3>
                         </div>
+                        <form action="" method="post" id="createProject">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingText" placeholder="Child Protection Project">
+                            <input type="text" class="form-control" id="title" placeholder="Child Protection Project">
                             <label for="floatingText">Project Title</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="floatingInput" placeholder="Project Duration">
+                            <input type="text" class="form-control" id="duration" placeholder="Project Duration">
                             <label for="floatingInput">Project Duration</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="floatingInput" placeholder="locations">
+                            <input type="tetx" class="form-control" id="location" placeholder="locations">
                             <label for="floatingInput">Project Locations</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="floatingInput" placeholder="Donor">
+                            <input type="text" class="form-control" id="donor" placeholder="Donor">
                             <label for="floatingInput">Donor or Source</label>
                         </div>
                        
-                        
-                        <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Create Project</button>
+                        <div class="col-lg-12 mx-auto mb-2 mt-3" id="FeedBackMessage"></div>
+                        <button type="submit" id="submitProject" class="btn btn-primary py-3 w-100 mb-4">Create Project</button>
                         <!-- <p class="text-center mb-0">Already have an Account? <a href="">Sign In</a></p> -->
                     </div>
                 </div>
+            </form>
             </div>
+        
         </div>
         <!-- Sign Up End -->
     </div>
@@ -59,6 +63,86 @@
 
     <!-- Template Javascript -->
    <script src="/js/main.js"></script>
+   <script>
+    $(document).ready(() => {
+        
+        $('#createProject').submit((e) => {
+            e.preventDefault();
+    
+            
+            const title = $('#title').val();
+            const duration = $('#duration').val();
+            const locations = $('#location').val();
+            const donor = $('#donor').val();
+            
+           
+    
+            if(title == '' || duration == ''){
+                const message = `<div class="col-lg-12 mb-4 alert alert-danger">
+                    <p>Project title is required</p>
+                    <p>Project duration is required</p>
+                    </div>`;
+                    $('#FeedBackMessage').html(message)
+                return;
+            }
+            const projectData = {
+                title,
+                duration,
+                locations,
+                donor
+            }
+            
+            $.ajax({
+                type: 'POST',
+                contentType: 'application/json',
+                url:'/api/v1/create',
+                data:JSON.stringify(projectData),
+                dataType:'json',
+                processData: false,
+                beforeSend: () => {
+                    const message = `<div class="alert alert-info">
+                    <p>Please wait while authenticating...</p>
+                    </div>`;
+                    $('#FeedBackMessage').html(message);
+                    $('#loginButton').prop('disabled',true);
+                },
+                success: (projectData) => {
+                    // localStorage.setItem("jwt-token-scon", data.token);
+                    const message = `<div class="alert alert-success">
+                       <p> Project Created Successfully</p>
+                    </div>`;
+                    $('#FeedBackMessage').html(message);
+                    // window.location.href = '/home';
+                    
+                },
+                error: (jqXHR,textStatus,errorThrown) => {
+                    
+                    const responseJson = jqXHR.responseJSON;
+                    $('#FeedBackMessage').html("");
+                    if (!responseJson) {
+                        const message = `<div class="alert alert-danger">
+                        <p>Project Information is required</p>
+                        <p>Opps somethong went wrong</p>
+                        </div>`;
+                        $('#FeedBackMessage').html(message)
+                        return;
+                    }
+                    else{
+                        const message = `<div class="alert alert-danger">
+                        ${responseJson.message}
+                        </div>`;
+                        $('#FeedBackMessage').html(message)
+                        return;
+                    }
+                },
+                complete: () => {
+                    $('#loginButton').prop('disabled',false);
+                }
+            });
+        })
+        
+    })
+   </script>
 </body>
 
 </html>

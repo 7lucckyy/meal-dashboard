@@ -14,136 +14,88 @@
             <!-- Form Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">
-                    <div class="col-sm-12 col-xl-6">
+                    <div class="col-sm-12 col-xl-12">
                         <div class="bg-secondary rounded h-100 p-4">
                             <h6 class="mb-4">Indicators Information</h6>
-                            <form>
+                            <form action="" method="post" id="createIndicator">
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Indicator Code</label>
-                                    <input type="email" class="form-control" id="exampleInputEmail1"
+                                    <input type="text" class="form-control" id="code"
                                         aria-describedby="emailHelp">
                                    
                                 </div>
+                                    
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Indicator Name</label>
-                                    <input type="email" class="form-control" id="exampleInputEmail1"
+                                    <input type="text" class="form-control" id="name"
                                         aria-describedby="emailHelp">
                                    
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Target</label>
-                                    <input type="email" class="form-control" id="exampleInputEmail1"
+                                    <input type="text" class="form-control" id="target"
                                         aria-describedby="emailHelp" placeholder="Numbers Only">
                                    
                                 </div>
-                               
-                            </form>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-xl-6">
-                        <div class="bg-secondary rounded h-100 p-4">
-                            <h6 class="mb-4">Child (0 - 6)</h6>
-                            <form>
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Number of Boys 0-6</label>
-                                    <input type="email" class="form-control" id="exampleInputEmail1"
+                                    <input type="text" class="form-control" id="cboys"
                                         aria-describedby="emailHelp">
                                    
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Number of Girls 0-6</label>
-                                    <input type="email" class="form-control" id="exampleInputEmail1"
-                                        aria-describedby="emailHelp">
-                                   
-                                </div>
-                                <div class="mb-3">
-                                    <label for="exampleInputEmail1" class="form-label">Total of Disable Children</label>
-                                    <input type="email" class="form-control" id="exampleInputEmail1"
+                                    <input type="text" class="form-control" id="cgirls"
                                         aria-describedby="emailHelp" placeholder="Numbers Only">
                                    
                                 </div>
                                 <div class="mb-3">
-                                    <label for="floatingSelect mb-6">Beneficiary Status</label>
-                                
-                                    <select class="form-select" id="floatingSelect"
-                                        aria-label="Floating label select example">
-                                       
-                                        <option selected>IDPs</option>
-                                        <option value="1">Host Community</option>
-                                        <option value="2">Returnee</option>
-                                        <option value="3">Refugee</option>
-                                    </select>
+                                    <label for="exampleInputEmail1" class="form-label">Number of male 11-13</label>
+                                    <input type="text" class="form-control" id="adoleboys"
+                                        aria-describedby="emailHelp">
                                     
                                 </div>
-                               
-                            </form>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-xl-6">
-                        <div class="bg-secondary rounded h-100 p-4">
-                            <h6 class="mb-4">Adolescent</h6>
-                            <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Number of male 11-13</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp">
-                                <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.
-                                </div> -->
-                            </div>
-                            <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Number of Female 11-13</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp">
-                                <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.
-                                </div> -->
-                            </div>
-                            <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Total of Disable Adolescent</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp" placeholder="Numbers Only">
-                                <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.
-                                </div> -->
-                            </div>
-                            <div class="mb-3">
-                                <label for="floatingSelect mb-6">Beneficiary Status</label>
-                            
-                                <select class="form-select" id="floatingSelect"
-                                    aria-label="Floating label select example">
-                                   
-                                    <option selected>IDPs</option>
-                                    <option value="1">Host Community</option>
-                                    <option value="2">Returnee</option>
-                                    <option value="3">Refugee</option>
-                                </select>
-                                
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-xl-6">
-                        <div class="bg-secondary rounded h-100 p-4">
-                           
-                                <h6 class="mb-4">Adult</h6>
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Number of Female 11-13</label>
+                                    <input type="text" class="form-control" id="adolegirls"
+                                        aria-describedby="emailHelp">
+                                    
+                                </div>
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Number of Male 13-17</label>
-                                    <input type="email" class="form-control" id="exampleInputEmail1"
+                                    <input type="text" class="form-control" id="adultboys"
                                         aria-describedby="emailHelp">
                                    
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Number of Female 13-17</label>
-                                    <input type="email" class="form-control" id="exampleInputEmail1"
+                                    <input type="text" class="form-control" id="adultgirls"
+                                        aria-describedby="emailHelp">
+                                   
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Number of Male</label>
+                                    <input type="text" class="form-control" id="male"
+                                        aria-describedby="emailHelp">
+                                    
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Number of Female</label>
+                                    <input type="text" class="form-control" id="female"
                                         aria-describedby="emailHelp">
                                    
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Total of Disable Adults</label>
-                                    <input type="email" class="form-control" id="exampleInputEmail1"
+                                    <input type="text" class="form-control" id="total_pwd"
                                         aria-describedby="emailHelp" placeholder="Numbers Only">
-                                   
+                                    
                                 </div>
                                 <div class="mb-3">
                                     <label for="floatingSelect mb-6">Beneficiary Status</label>
                                 
-                                    <select class="form-select" id="floatingSelect"
+                                    <select class="form-select" id="beneficiary_status"
                                         aria-label="Floating label select example">
                                        
                                         <option selected>IDPs</option>
@@ -153,48 +105,14 @@
                                     </select>
                                     
                                 </div>
-                            
+                                <div class="col-lg-12 mx-auto mb-2 mt-3" id="FeedBackMessage"></div>
+                                <button type="submit" id="submitIndicator" class="btn btn-primary py-3 w-100 mb-4">Create Indicator</button>
+                            </div>
+                            </form>
                         </div>
                     </div>
-                    <div class="col-sm-12 col-xl-6">
-                        <div class="bg-secondary rounded h-100 p-4">
-                            <h6 class="mb-4">Caregivers Information</h6>
-                            <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Number of Male</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp">
-                                <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.
-                                </div> -->
-                            </div>
-                            <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Number of Female</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp">
-                                <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.
-                                </div> -->
-                            </div>
-                            <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Total of Disable Adults</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp" placeholder="Numbers Only">
-                                
-                            </div>
-                            <div class="mb-3">
-                                <label for="floatingSelect mb-6">Beneficiary Status</label>
-                            
-                                <select class="form-select" id="floatingSelect"
-                                    aria-label="Floating label select example">
-                                   
-                                    <option selected>IDPs</option>
-                                    <option value="1">Host Community</option>
-                                    <option value="2">Returnee</option>
-                                    <option value="3">Refugee</option>
-                                </select>
-                                
-                            </div>
-                            <button type="button" class="btn btn-outline-danger m-2">Submit</button>
-                        </div>
-                    </div>
+                    
+                </div>
                   
             </div>
             <!-- Form End -->
@@ -224,6 +142,106 @@
 
     <!-- Template Javascript -->
    <script src="/js/main.js"></script>
+
+   <script>
+    $(document).ready(() => {
+        
+        $('#createIndicator').submit((e) => {
+            e.preventDefault();
+    
+            
+            const code = $('#code').val();
+            const name = $('#name').val();
+            const target = $('#target').val();
+            const child_boys = $('#cboys').val();
+            const child_girls = $('#cgirls').val();
+            const adole_boys = $('#adoleboys').val();
+            const adole_girls = $('#adolegirls').val();
+            const adult_boys = $('#adultboys').val();
+            const adult_girls = $('#adultboys').val();
+            const male = $('#male').val();
+            const female = $('#female').val();
+            const total_pwd = $('#total_pwd').val();
+            // const beneficiary_status = $('#beneficiary_status').val();
+            // const donor = $('#donor').val();
+            
+           
+    
+            // if(title == '' || duration == '' ||  }){
+            //     const message = `<div class="col-lg-12 mb-4 alert alert-danger">
+            //         <p>Project title is required</p>
+            //         <p>Project duration is required</p>
+            //         </div>`;
+            //         $('#FeedBackMessage').html(message)
+            //     return;
+            // }
+            const indicatorData = {
+                code,
+                name,
+                target,
+                cboys,
+                cgirls,
+                adoleboys,
+                adolegirls,
+                adultboys,
+                adultgirls,
+                male,
+                female,
+                total_pwd
+            }
+
+            
+            $.ajax({
+                type: 'POST',
+                contentType: 'application/json',
+                url:'/api/v1/create',
+                data:JSON.stringify(indicatorData),
+                dataType:'json',
+                processData: false,
+                beforeSend: () => {
+                    const message = `<div class="alert alert-info">
+                    <p>Please wait while creating...</p>
+                    </div>`;
+                    $('#FeedBackMessage').html(message);
+                    $('#submitIndicator').prop('disabled',true);
+                },
+                success: (projectData) => {
+                    // localStorage.setItem("jwt-token-scon", data.token);
+                    const message = `<div class="alert alert-success">
+                       <p> Indicator Created Successfully</p>
+                    </div>`;
+                    $('#FeedBackMessage').html(message);
+                    // window.location.href = '/home';
+                    
+                },
+                error: (jqXHR,textStatus,errorThrown) => {
+                    
+                    const responseJson = jqXHR.responseJSON;
+                    $('#FeedBackMessage').html("");
+                    if (!responseJson) {
+                        const message = `<div class="alert alert-danger">
+                        <p>Project Information is required</p>
+                        <p>Opps somethong went wrong</p>
+                        </div>`;
+                        $('#FeedBackMessage').html(message)
+                        return;
+                    }
+                    else{
+                        const message = `<div class="alert alert-danger">
+                        ${responseJson.message}
+                        </div>`;
+                        $('#FeedBackMessage').html(message)
+                        return;
+                    }
+                },
+                complete: () => {
+                    $('#loginButton').prop('disabled',false);
+                }
+            });
+        })
+        
+    })
+   </script>
 </body>
 
 </html>
