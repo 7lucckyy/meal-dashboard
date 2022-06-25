@@ -35,7 +35,11 @@
                         </div>
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control" id="donor" placeholder="Donor">
-                            <label for="floatingInput">Donor or Source</label>
+                            <label for="floatingInput">Donor or Source of fund</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="projectCode" placeholder="Project Code">
+                            <label for="floatingInput">Project Code</label>
                         </div>
                        
                         <div class="col-lg-12 mx-auto mb-2 mt-3" id="FeedBackMessage"></div>
@@ -74,13 +78,15 @@
             const duration = $('#duration').val();
             const locations = $('#location').val();
             const donor = $('#donor').val();
+            const project_code = $('#projectCode').val();
             
            
     
-            if(title == '' || duration == ''){
+            if(title == '' || duration == '' || project_code == ''){
                 const message = `<div class="col-lg-12 mb-4 alert alert-danger">
                     <p>Project title is required</p>
                     <p>Project duration is required</p>
+                    <p>Project code is required</p>
                     </div>`;
                     $('#FeedBackMessage').html(message)
                 return;
@@ -89,7 +95,8 @@
                 title,
                 duration,
                 locations,
-                donor
+                donor,
+                project_code
             }
             
             $.ajax({

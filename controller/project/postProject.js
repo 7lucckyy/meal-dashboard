@@ -8,7 +8,7 @@ const Projects = require('../../model/project-infos');
 
 module.exports = async (req, res)=>{
     try {
-        let { title, duration, locations, donor} = req.body;
+        let { title, duration, locations, donor, project_code} = req.body;
 
 
             if(validator.isEmpty(title)){
@@ -58,6 +58,7 @@ module.exports = async (req, res)=>{
                 duration: duration,
                 locations: locations,
                 donor:    donor,
+                p_code: project_code, 
                 is_deleted: 0
             })
             

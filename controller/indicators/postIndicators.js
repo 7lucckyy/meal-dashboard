@@ -7,10 +7,18 @@ const Indicators = require('../../model/indicators');
 
 module.exports = async (req, res)=>{
     try {
+
         let { code, name, target, child_boys, child_girls, adole_boys, adole_girls, 
             adult_boys, adult_girls, male, female, beneficiary_status, 
-            total_pwd} = req.body;
+            total_pwd, project_code} = req.body;
 
+            if(validator.isEmpty(project_code)){
+                return res.status(400).json({
+                    Success: false,
+                    Message: "Opps Project Code cant be blank"
+                })
+            }
+            
 
             if(validator.isEmpty(code)){
                 return res.status(400).json({
@@ -132,6 +140,23 @@ module.exports = async (req, res)=>{
                     Description: "Must be Aplha-numeric"
                 })
             }
+
+            const AuthencateProject = await Indicators.findOne({
+                where:{
+                    p_code: project_code,
+                    is_deleted: false,
+                }
+            })
+
+            if(!AuthencateProject){
+                return res.status(400).json({
+                    Success: false,
+                    Message: "Invalid Project Code",
+                    Description: "Project Code Must be provided"
+                })
+            }
+
+            const projectID = AuthencateProject.id;
             
         try {
             project_id = uuidv4();
@@ -141,7 +166,7 @@ module.exports = async (req, res)=>{
                 code: code,
                 name: name,
                 target: target,
-                p_id : project_id,
+                p_id : projectID,
                 child_boys: child_boys,
                 child_girls:    child_girls,
                 adole_boys: adole_boys,
