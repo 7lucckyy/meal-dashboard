@@ -226,7 +226,7 @@
                     
                     const responseJson = jqXHR.responseJSON;
                     $('#FeedBackMessage').html("");
-                    if (!responseJson.Message) {
+                    if (!responseJson) {
                         const message = `<div class="alert alert-danger">
                         <p>Project Information is required</p>
                         <p>Opps somethong went wrong</p>
