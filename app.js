@@ -48,8 +48,11 @@ app.get('/home', (req, res)=>{
 app.get('/impact', (req, res)=>{
     res.render('widget');
 });
-app.get('/uploads', (req, res)=>{
-    res.render('upload');
+app.get('/add-mov', (req, res)=>{
+    res.render('mov');
+});
+app.get('/add-toolkit', (req, res)=>{
+    res.render('toolkits');
 });
 
 //Database
