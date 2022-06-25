@@ -170,19 +170,7 @@
             const female = $('#female').val();
             const total_pwd = $('#total_pwd').val();
             const project_code = $('#projectCode').val();
-            // const beneficiary_status = $('#beneficiary_status').val();
-            // const donor = $('#donor').val();
             
-           return console.log(name);
-    
-            // if(title == '' || duration == '' ||  }){
-            //     const message = `<div class="col-lg-12 mb-4 alert alert-danger">
-            //         <p>Project title is required</p>
-            //         <p>Project duration is required</p>
-            //         </div>`;
-            //         $('#FeedBackMessage').html(message)
-            //     return;
-            // }
             const indicatorData = {
                 code,
                 name,
@@ -198,10 +186,8 @@
                 total_pwd,
                 project_code
             }
-            console.log(indicatorData);
-            return;
-
             
+            return console.log(IndicatorData.name);
             $.ajax({
                 type: 'POST',
                 contentType: 'application/json',
@@ -216,7 +202,7 @@
                     $('#FeedBackMessage').html(message);
                     $('#submitIndicator').prop('disabled',true);
                 },
-                success: (projectData) => {
+                success: (indicatorData) => {
                     // localStorage.setItem("jwt-token-scon", data.token);
                     const message = `<div class="alert alert-success">
                        <p> Indicator Created Successfully</p>
