@@ -101,37 +101,9 @@ module.exports = async (req, res)=>{
                     Description: "female cannot be blank"
                 })
             }
-            if(validator.isNumeric(pwd_boys)==false){
-                return res.status(400).json({
-                    Success: false,
-                    Message: "pwd_boys must be number not string",
-                    Description: "Kindly put your pwd_boys in numbers"
-                })
-            }
-            if(validator.isEmpty(pwd_girls)){
-                return res.status(400).json({
-                    Success: false,
-                    Message: "Oops pwd_girls is required",
-                    
-                    Description: "pwd_girls cannot be blank"
-                })
-            }
-            if(validator.isNumeric(pwd_male)==false){
-                return res.status(400).json({
-                    Success: false,
-                    Message: "pwd_male must be number not string",
-                    Description: "Kindly put your pwd_male in numbers"
-                })
-            }
-            if(validator.isEmpty(pwd_female)){
-                return res.status(400).json({
-                    Success: false,
-                    Message: "Oops pwd_female is required",  
-                    Description: "pwd_female cannot be blank"
-                })
-            }
+            
 
-            if(validator.isEmpty(beneficiary_status)){
+            if(validator.isEmpty(total_pwd)){
                 return res.status(400).json({
                     Successs: false,
                     Message: "beneficiary status is required",
