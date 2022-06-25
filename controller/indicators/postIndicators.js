@@ -127,8 +127,7 @@ module.exports = async (req, res)=>{
             if(validator.isEmpty(pwd_female)){
                 return res.status(400).json({
                     Success: false,
-                    Message: "Oops pwd_female is required",
-                    
+                    Message: "Oops pwd_female is required",  
                     Description: "pwd_female cannot be blank"
                 })
             }
