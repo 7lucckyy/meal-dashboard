@@ -30,7 +30,7 @@ module.exports = async (req, res)=>{
             if(validator.isEmpty(name)){
                 return res.status(400).json({
                     Success: false,
-                    Message: "name address can not be blank",
+                    Message: "name can not be blank",
                     Description: "name is required"
                 })  
               }
