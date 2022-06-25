@@ -2,6 +2,7 @@
 const { v4: uuidv4 } = require('uuid');
 const validator = require('validator');
 const Indicators = require('../../model/indicators');
+const Projects = require('../../model/project-infos');
 
 
 
@@ -111,7 +112,7 @@ module.exports = async (req, res)=>{
                 })
             }
 
-            const AuthencateProject = await Indicators.findOne({
+            const AuthencateProject = await Projects.findOne({
                 where:{
                     p_code: project_code,
                     is_deleted: false,
