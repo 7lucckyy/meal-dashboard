@@ -129,6 +129,8 @@ module.exports = async (req, res)=>{
 
             const projectCode = AuthencateProject.p_code;
             const projectID = AuthencateProject.p_id;
+
+            return console.log(projectID);
             
         try {
            
