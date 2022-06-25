@@ -173,7 +173,7 @@
             // const beneficiary_status = $('#beneficiary_status').val();
             // const donor = $('#donor').val();
             
-           
+           return console.log(name);
     
             // if(title == '' || duration == '' ||  }){
             //     const message = `<div class="col-lg-12 mb-4 alert alert-danger">
@@ -235,7 +235,7 @@
                         <p>Opps somethong went wrong</p>
                         </div>`;
                         $('#FeedBackMessage').html(message)
-                        console.log(responseJson);
+                        console.log(responseJson.Message);
                         return;
                     }
                     else{
