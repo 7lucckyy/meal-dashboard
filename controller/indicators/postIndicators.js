@@ -127,7 +127,7 @@ module.exports = async (req, res)=>{
                 })
             }
 
-            const projectID = AuthencateProject.id;
+            const projectID = AuthencateProject.p_code;
             console.log(projectID);
             
         try {
@@ -138,7 +138,7 @@ module.exports = async (req, res)=>{
                 code: code,
                 name: name,
                 target: target,
-                p_id : projectID,
+                p_code : projectCode,
                 child_boys: child_boys,
                 child_girls:    child_girls,
                 adole_boys: adole_boys,
