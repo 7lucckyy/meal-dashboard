@@ -128,9 +128,10 @@ module.exports = async (req, res)=>{
             }
 
             const projectID = AuthencateProject.id;
+            console.log(projectID);
             
         try {
-            project_id = uuidv4();
+           
             const createIndicators = await Indicators.create({
                 id: uuidv4(),
                 
