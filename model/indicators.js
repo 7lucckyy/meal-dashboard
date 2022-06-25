@@ -18,62 +18,66 @@ const Indicators = db.define('indicator', {
 
     },
     target:{
-        type: sequelize.INTEGER,
+        type: sequelize.BIGINT,
         allowNull: false
 
     },
     child_boys:{
-        type: sequelize.INTEGER,
+        type: sequelize.BIGINT,
         allowNull: false
 
     },
     child_girls:{
-        type: sequelize.INTEGER,
+        type: sequelize.BIGINT,
         allowNull: false
 
     },
     adole_boys:{
-        type: sequelize.INTEGER,
+        type: sequelize.BIGINT,
         allowNull: false
 
     },
     adole_girls:{
-        type: sequelize.INTEGER,
+        type: sequelize.BIGINT,
         allowNull: false
 
     },
     adult_boys:{
-        type: sequelize.INTEGER,
+        type: sequelize.BIGINT,
         allowNull: false
 
     },
     adult_girls:{
-        type: sequelize.INTEGER,
+        type: sequelize.BIGINT,
         allowNull: false
 
     },
     male:{
-        type: sequelize.INTEGER,
+        type: sequelize.BIGINT,
         allowNull: false
 
     },
     female:{
-        type: sequelize.INTEGER,
+        type: sequelize.BIGINT,
         allowNull: false
 
     },
     beneficiary_status:{
-        type: sequelize.INTEGER,
+        type: sequelize.BIGINT,
         allowNull: true
     },
     total_pwd:{
-        type: sequelize.INTEGER,
+        type: sequelize.BIGINT,
         allowNull: false
     },
     is_deleted:{
         type: sequelize.BOOLEAN
     },
     p_id:{
+        type: sequelize.STRING,
+        allowNull: false
+    },
+    p_code:{
         type: sequelize.STRING,
         allowNull: false
     }

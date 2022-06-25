@@ -29,6 +29,10 @@ const Projects = db.define('project_info', {
     is_deleted:{
         type: sequelize.BOOLEAN,
         required: true
+    },
+    p_code: {
+        type: sequelize.STRING,
+        allowNull: false
     }
 })
 
