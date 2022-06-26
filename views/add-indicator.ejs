@@ -215,16 +215,16 @@
                     $('#FeedBackMessage').html("");
                     if (!responseJson) {
                         const message = `<div class="alert alert-danger">
-                        <p>Project Information is required</p>
+                        <p>Indicator Information is required</p>
                         <p>Opps somethong went wrong</p>
                         </div>`;
                         $('#FeedBackMessage').html(message)
-                        console.log(responseJson.Message);
+                        console.log(responseJson.message);
                         return;
                     }
                     else{
                         const message = `<div class="alert alert-danger">
-                        ${responseJson.Message}
+                        ${responseJson.message}
                         </div>`;
                         $('#FeedBackMessage').html(message)
                         return;
