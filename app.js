@@ -54,6 +54,9 @@ app.get('/add-mov', (req, res)=>{
 app.get('/add-toolkit', (req, res)=>{
     res.render('toolkits');
 });
+app.get('/create-user', (req, res)=>{
+    res.render('register');
+})
 
 //Database
 try {

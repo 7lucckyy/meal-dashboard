@@ -57,28 +57,23 @@ module.exports = async (req, res)=>{
                 })
             }
             let Haspassword = await bcrypt.hash(password, 10);
-            // const Transaction = await db.transaction()
+            
         try {
             
-
-
             const registerUser = await Users.create({
                 id: uuidv4(),
                 name: name,
                 email: email,
-                is_admin: 1,
+                is_admin: is_admin,
                 password: Haspassword,
                 is_deleted: 0
             })
-            // {
-            //     transaction: Transaction
-            // }
-            // await Transaction.commit()
+            
             return res.status(201).json({
             msg: "Created Successfully"
             })
         } catch (e) {
-            // Transaction.rollback()
+            
             console.log(e);
             return res.status(500).json({
                 msg: "Could not complete operation"
