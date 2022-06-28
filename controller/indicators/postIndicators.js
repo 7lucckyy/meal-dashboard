@@ -118,7 +118,7 @@ module.exports = async (req, res)=>{
                     is_deleted: false,
                 }
             })
-
+            return 
             if(!AuthencateProject){
                 return res.status(400).json({
                     Success: false,
@@ -128,7 +128,7 @@ module.exports = async (req, res)=>{
             }
 
             const projectCode = AuthencateProject.p_code;
-            const projectID = AuthencateProject.p_id;
+            const projectID = AuthencateProject.id;
    
         try {
            
