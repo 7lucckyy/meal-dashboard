@@ -104,14 +104,14 @@
                     $('#FeedBackMessage').html(message);
                     $('#loginButton').prop('disabled',true);
                 },
-                success: ({data}) => {
+                success: (data) => {
                    
                     localStorage.setItem("jwt-token-scon", data.data.token);
                     const message = `<div class="alert alert-success">
                     <p>Redirecting user...</p>
                     </div>`;
                     $('#FeedBackMessage').html(message);
-                    window.location.href = "/home";
+                    window.location.href = '/home';
                     
                 },
                 error: (jqXHR,textStatus,errorThrown) => {
