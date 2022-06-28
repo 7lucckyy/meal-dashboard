@@ -1,5 +1,6 @@
 const sequelize = require('sequelize');
 const db = require('../config/db');
+const Indicators = require('./indicators');
 
 const Projects = db.define('project_info', {
     id: {
@@ -34,6 +35,13 @@ const Projects = db.define('project_info', {
         type: sequelize.STRING,
         allowNull: false
     }
+})
+
+Project.hasOne(Indicators,{
+    foreignKey: 'p_id'
+})
+Indicators.belongsTo(Projects, {
+    
 })
 
 module.exports = Projects;

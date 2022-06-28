@@ -83,4 +83,5 @@ const Indicators = db.define('indicator', {
     }
 })
 
+
 module.exports = Indicators;
