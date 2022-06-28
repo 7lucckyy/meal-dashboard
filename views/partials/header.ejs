@@ -5,7 +5,10 @@
         </a>
         <div class="d-flex align-items-center ms-4 mb-4">
             <div class="position-relative">
-                <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                <svg xmlns="http://www.w3.org/2000/svg" style="width: 40px; height: 40px;" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                  </svg>
                 <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
             </div>
             <div class="ms-3">
@@ -16,20 +19,54 @@
         <div class="navbar-nav w-100">
             <a href="/dashboard" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>SCoN Dashboard</a>
             <div class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Sub Dashboards</a>
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-chart-pie me-2"></i>Dashboards</a>
                 <div class="dropdown-menu bg-transparent border-0">
-                    <a href="/nhf-dashboard" class="dropdown-item">NHF Dashbord</a>
-                    <a href="/giz-dashboard" class="dropdown-item">GIZ Dashboard</a>
-                    <a href="/eu-dashboard" class="dropdown-item">EU Dashboard</a>
+                    <a href="/nhf-dashboard" class="nav-item nav-link"><i class="fa fa-chart-pie me-2"></i>NHF Dashbord</a>
+                    <a href="/giz-dashboard" class="nav-item nav-link"><i class="fa fa-chart-pie me-2"></i>GIZ Dashboard</a>
+                    <a href="/eu-dashboard" class="nav-item nav-link"><i class="fa fa-chart-pie me-2"></i>EU Dashboard</a>
                 </div>
             </div>
-            <a href="/impact" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>
-            <a href="/create-project" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Create Project</a>
-            <a href="/view-indicator" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Indicators</a>
-            <a href="#" class="nav-item nav-link"><i class="fa fa-file-archive-o me-2"></i>Toolkits</a>
-            <a href="#" class="nav-item nav-link"><i class="fa fa-cloud-upload me-2"></i>Upload MoV</a>
-            <a href="#" class="nav-item nav-link"><i class="fa fa-eye me-2"></i>View MoVs</a>
-           .
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-th me-2"></i>Indicators</a>
+                <div class="dropdown-menu bg-transparent border-0">
+                    <a href="/create-indicator" class="nav-item nav-link"><i class="bi bi-cloud-plus me-2"></i>Add</a>
+                    <a href="/view-indicator" class="nav-item nav-link"><i class="fa fa-eye me-2"></i>View</a>
+                </div>
+            </div>
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Project</a>
+                <div class="dropdown-menu bg-transparent border-0">
+                    <a href="/create-project" class="nav-item nav-link"><i class="bi bi-cloud-plus me-2"></i>Add</a>
+                    <a href="/view-project" class="nav-item nav-link"><i class="fa fa-eye me-2"></i>View</a>
+                </div>
+            </div>
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="bi bi-tools me-2"></i>Toolkits</a>
+                <div class="dropdown-menu bg-transparent border-0">
+                    <a href="/upload-toolkits" class="nav-item nav-link"><i class="bi bi-cloud-plus me-2"></i>Add</a>
+                    <a href="/view-toolkits" class="nav-item nav-link"><i class="fa fa-eye me-2"></i>View</a>
+                </div>
+            </div>
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="bi bi-ui-checks-grid me-2"></i>Movs</a>
+                <div class="dropdown-menu bg-transparent border-0">
+                    <a href="/upload-mov" class="nav-item nav-link"><i class="bi bi-cloud-plus me-2"></i>Add</a>
+                    <a href="/view-mov" class="nav-item nav-link"><i class="fa fa-eye me-2"></i>View</a>
+                </div>
+            </div>
+            <a href="/impact" class="nav-item nav-link"><i class="bi bi-graph-up me-2"></i>Impact</a>            
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="bi bi-person-plus-fill me-2"></i>Create User</a>
+                <div class="dropdown-menu bg-transparent border-0">
+                    <a href="/create-user" class="nav-item nav-link"><i class="bi bi-cloud-plus me-2"></i>Add</a>
+                    <a href="/delete-user" class="nav-item nav-link"><i class="bi bi-trash me-2"></i>Delete</a>
+                </div>
+            </div>
+            
         </div>
     </nav>
 </div>
