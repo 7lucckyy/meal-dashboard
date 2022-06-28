@@ -37,11 +37,5 @@ const Projects = db.define('project_info', {
     }
 })
 
-Projects.hasMany(Indicators,{
-    foreignKey: 'p_id'
-})
-Indicators.belongsTo(Projects, {
-    
-})
 
 module.exports = Projects;
