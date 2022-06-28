@@ -118,7 +118,6 @@ module.exports = async (req, res)=>{
                     is_deleted: false,
                 }
             })
-            return 
             if(!AuthencateProject){
                 return res.status(400).json({
                     Success: false,
