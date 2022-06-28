@@ -37,7 +37,7 @@ const Projects = db.define('project_info', {
     }
 })
 
-Project.hasOne(Indicators,{
+Projects.hasMany(Indicators,{
     foreignKey: 'p_id'
 })
 Indicators.belongsTo(Projects, {
