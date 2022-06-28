@@ -8,7 +8,7 @@ const validator = require('validator')
 
 module.exports = async (req, res)=>{
     try {
-        let { name, email, password} = req.body;
+        let { name, email, password, is_admin} = req.body;
 
 
             if(validator.isEmpty(name)){
