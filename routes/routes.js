@@ -22,7 +22,7 @@ router.post('/register',  postUser);
 router.post('/login', postLogin);
 router.post('/create', postProjectInfo);
 router.post('/create-indicator', postIndicators);
-router.post('/get-indicators', getIndicators);
+router.get('/get-indicators', getIndicators);
 
 
 
