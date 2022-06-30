@@ -6,7 +6,7 @@ module.exports = async (req, res)=>{
         let IndicatorCode = req.body.indicator_code;
         const getAllIndicators = await Indicators.findAll({
             where: {
-                is_deleted: 0
+                is_deleted: false
             }
         })
         return console.log({getAllIndicators});
