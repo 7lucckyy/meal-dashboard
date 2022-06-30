@@ -9,7 +9,11 @@ module.exports = async (req, res)=>{
                 is_deleted: false
             }
         })
-        return console.log({getAllIndicators});
+        if(getAllIndicators){
+            return res.status(200).json({
+                data: getAllIndicators
+            })
+        }
         
     } catch (e) {
         console.log(e);
