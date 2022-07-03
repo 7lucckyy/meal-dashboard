@@ -33,7 +33,7 @@ module.exports = async (req, res)=>{
                     const createToolkit = await Toolkits.create({
                         id: ToolID,
                         name: name,
-                        src: documentName.path,
+                        path: documentName.path,
                         is_deleted: 0,
                     })
                     
