@@ -21,13 +21,13 @@
                         </div>
                         <form action="" method="post" id="uploadToolkit">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="Name" placeholder="Child Protection Project">
+                                    <input type="text" class="form-control" id="name" placeholder="Child Protection Project">
                                     <label for="floatingText">Name</label>
                                 </div>
                                 <h6 class="mb-4">File Input</h6>
                                     <div class="mb-3">
                                         <label for="formFile" class="form-label">Default file input example</label>
-                                        <input class="form-control bg-dark" type="file" id="Toolkits">
+                                        <input class="form-control bg-dark" type="file" id="filename">
                                     </div>
                                 
                                 <div class="col-lg-12 mx-auto mb-2 mt-3" id="FeedBackMessage"></div>
@@ -91,14 +91,14 @@
         e.preventDefault();
 
         
-        const Name = $('#Name').val(); 
-        const Toolkits = $('#Toolkits')[0].files[0];
+        const name = $('#name').val(); 
+        const filename = $('#filename')[0].files[0];
 
-        if(Name == ""){
-          const emptyError = '<div class="col-lg-12 alert alert-danger"> Book Name is required</div>';
+        if(name == ""){
+          const emptyError = '<div class="col-lg-12 alert alert-danger"> Book name is required</div>';
           $('#errorFeedBack').html(emptyError);
         }
-        if(Toolkits == ""){
+        if(filename == ""){
           const emptyError = '<div class="col-lg-12 alert alert-danger"> Upload Book </div>';
           $('#errorFeedBack').html(emptyError);
         }
@@ -106,8 +106,8 @@
         
         const fd = new FormData();
         
-        fd.append('Name',Name);
-        fd.append('Toolkits',Toolkits);
+        fd.append('name',name);
+        fd.append('filename',filename);
 
         $.ajax({
             type: 'POST',
@@ -120,7 +120,7 @@
             $('#feedbackMessage').html(`<div class="alert alert-info">Submitting Book...</div>`);
           },
             success: (data) => {
-              $('#feedbackMessage').html(`<div class="alert alert-info">${data.message}</div>`);    
+              $('#feedbackMessage').html(`<div class="alert alert-info">${data.msg}</div>`);    
             },
             error: (jqXHR,textStatus,errorThrown) => {
             console.log(errorThrown);
@@ -129,8 +129,8 @@
           },
             complete: () => {
 
-              $('#Name').val("");
-              $('#Toolkits').val("");
+              $('#name').val("");
+              $('#filename').val("");
               
 
               $('#feedbackMessage').html(``);

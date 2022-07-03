@@ -8,7 +8,7 @@ const fileUpload = require('../../Middleware/uploadFile');
 
 module.exports = async (req, res)=>{
     try {
-        let name = req.body.fd.Name;
+        let name = req.body.name;
         let documentName = req.files.filename[0];
 
             if(validator.isEmpty(name)){
