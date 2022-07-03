@@ -3,7 +3,7 @@ const multer = require('multer');
 
 const storage = multer.diskStorage({
     destination: function(req, file, cb){
-        cb(null, 'uploads/toolkits');
+        cb(null, '../uploads/toolkits');
     },
     filename: function(req, file, cb){
         cb(null, new Date().toISOString() + '' + file.originalname)
