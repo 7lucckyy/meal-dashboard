@@ -11,7 +11,7 @@ const Toolkits = db.define('toolkits', {
         type: sequelize.STRING,
         required: true
     },
-    path:{
+    src:{
         type: sequelize.STRING,
         required: true
     },

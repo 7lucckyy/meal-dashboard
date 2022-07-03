@@ -11,7 +11,7 @@ const Movs = db.define('movs', {
         type: sequelize.STRING,
         required: true
     },
-    path:{
+    src:{
         type: sequelize.STRING,
         required: true
     },

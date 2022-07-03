@@ -68,7 +68,6 @@ module.exports = async (req, res)=>{
                 return res.status(400).json({
                     Success: false,
                     Message: "Oops adole_girls is required",
-                    
                     Description: "adole_girls cannot be blank"
                 })
             }
@@ -128,6 +127,7 @@ module.exports = async (req, res)=>{
 
             const projectCode = AuthencateProject.p_code;
             const projectID = AuthencateProject.id;
+            const date = new Date();
    
         try {
            
@@ -150,6 +150,7 @@ module.exports = async (req, res)=>{
                 total_pwd: total_pwd,
                 beneficiary_status:    0,
                 is_deleted: 0,
+                date: date
               
 
             })

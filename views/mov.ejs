@@ -56,7 +56,104 @@
 
     <!-- Template Javascript -->
     <script src="/public/js/main.js"></script>
+    <script>
+        $(document).ready(() => {
+        $.ajax({
+          type: 'GET',
+          url: '/avocad0/api/dashboard.php',
+          dataType: 'json',
+          headers: {
+            'Authorization': localStorage.getItem('jwt-token-avocad0')
+          },
+          beforeSend: () => {
+            $('#feedbackMessage').html(`<div class="alert alert-info">Fetching user data...</div>`);
+          },
+          success: (data) => {
+            const author = data.data;
+            console.log(author);
+            $('#fullName').html(`<label for="fullName">Full Name:</label> <b>${author.name}</b>`);
+            $('#email').html(`<label for="Fullname">Email:</label> <b>${author.email}</b>`);
+            $('#earnings').html(`<label for="earnings">Earnings:</label> <b>${author.earnings}<b>`);
+          },
+          error: (jqXHR,textStatus,errorThrown) => {
+            location.href = '/avocad0/public/login.html';
+            return;
+          },
+          complete: () => {
+            $('#feedbackMessage').html(``);
+          }
+        });
+    $('#submitBook').submit((e) => {
+        e.preventDefault();
 
+        
+        const BookName = $('#bookName').val();
+       
+        const BookTitle = $('#bookTitle').val();
+
+        const Description = $('#description').val();
+
+        const authorName = $('#nameAuthor').val();
+
+        const aboutAuthor = $('#aboutAuthor').val();
+
+        const uploadBook = $('#uploadBook')[0].files[0];
+        
+        const uploadCover = $('#uploadCover')[0].files[0];
+
+        if(Name == ""){
+          const emptyError = '<div class="col-lg-12 alert alert-danger"> Book Name is required</div>';
+          $('#errorFeedBack').html(emptyError);
+        }
+        
+        if(uploadBook == ""){
+          const emptyError = '<div class="col-lg-12 alert alert-danger"> Upload Book </div>';
+          $('#errorFeedBack').html(emptyError);
+        }
+          
+        
+        const fd = new FormData();
+        
+        fd.append('bookName',BookName);
+        fd.append('bookTitle',BookTitle);
+        fd.append('description',Description);
+        fd.append('authorName', authorName);
+        fd.append('aboutAuthor',aboutAuthor);
+        fd.append('uploadBook',uploadBook);
+        fd.append('uploadCover',uploadCover);
+
+        $.ajax({
+            type: 'POST',
+            url:'../api/submitWork.php',
+            processData: false,
+            contentType: false,
+            cache: false,
+            data:fd,
+            beforeSend: () => {
+            $('#feedbackMessage').html(`<div class="alert alert-info">Submitting Book...</div>`);
+          },
+            success: (data) => {
+              $('#feedbackMessage').html(`<div class="alert alert-info">${data.message}</div>`);    
+            },
+            complete: () => {
+
+              $('#bookName').val("");
+              $('#bookTitle').val("");
+              $('#description').val("");
+              $('#nameAuthor').val("");
+              $('#aboutAuthor').val("");
+              $('#uploadBook').val("");
+              $('#uploadCover').val("");
+
+              $('#feedbackMessage').html(``);
+          }
+        });
+    })
+    
+})
+
+
+    </script>
  
 </body>
 

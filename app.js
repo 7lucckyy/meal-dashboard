@@ -5,12 +5,12 @@ const morgan = require('morgan');
 const PORT = process.env.PORT || 5000;
 const db = require('./config/db');
 const router = require('./routes/routes');
-
 const app = express();
 
 //Middlewares
-app.use(morgan())
+app.use(morgan('combined'));
 app.use('/api/v1', router);
+
 
 app.use(express.urlencoded({extended: true})); 
 app.use(express.json());
@@ -51,7 +51,7 @@ app.get('/impact', (req, res)=>{
 app.get('/add-mov', (req, res)=>{
     res.render('mov');
 });
-app.get('/add-toolkit', (req, res)=>{
+app.get('/upload-toolkits', (req, res)=>{
     res.render('toolkits');
 });
 app.get('/create-user', (req, res)=>{

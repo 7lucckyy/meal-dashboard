@@ -19,18 +19,20 @@
                             
                             <h3 class="tetx-center">Upload Toolkits</h3>
                         </div>
-                        <form action="" method="post" id="createProject">
+                        <form action="" method="post" id="uploadToolkit">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="title" placeholder="Child Protection Project">
+                                    <input type="text" class="form-control" id="Name" placeholder="Child Protection Project">
                                     <label for="floatingText">Name</label>
                                 </div>
                                 <h6 class="mb-4">File Input</h6>
                                     <div class="mb-3">
                                         <label for="formFile" class="form-label">Default file input example</label>
-                                        <input class="form-control bg-dark" type="file" id="formFile">
+                                        <input class="form-control bg-dark" type="file" id="Toolkits">
                                     </div>
-                            
+                                
                                 <div class="col-lg-12 mx-auto mb-2 mt-3" id="FeedBackMessage"></div>
+                                <div class="col-lg-12 mx-auto mb-2 mt-3 " id="errorFeedBack"></div>
+                               
                                 <button type="submit" id="uploadToolkits" class="btn btn-primary py-3 w-100 mb-4">Create Project</button>
                                 <!-- <p class="text-center mb-0">Already have an Account? <a href="">Sign In</a></p> -->
                             </div>
@@ -55,8 +57,89 @@
     <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
     <!-- Template Javascript -->
-    <script src="/public/js/main.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        $(document).ready(() => {
+        // $.ajax({
+        //   type: 'GET',
+        //   url: 'localhost:5000/api/v1/upload-toolkits',
+        //   dataType: 'json',
+        // //   headers: {
+        // //     'Authorization': localStorage.getItem('jwt-token-scon')
+        // //   },
+        //   beforeSend: () => {
+        //     $('#feedbackMessage').html(`<div class="alert alert-info">Fetching user data...</div>`);
+        //   },
+        //   success: (data) => {
+        //     // const author = data.data;
+        //     // console.log(author);
+        //     // $('#fullName').html(`<label for="fullName">Full Name:</label> <b>${author.name}</b>`);
+        //     // $('#email').html(`<label for="Fullname">Email:</label> <b>${author.email}</b>`);
+        //     // $('#earnings').html(`<label for="earnings">Earnings:</label> <b>${author.earnings}<b>`);
+        //         console.log(data.data.token);
+        //   },
+        //   error: (jqXHR,textStatus,errorThrown) => {
+        //     console.log();
+            
+        //     return;
+        //   },
+        //   complete: () => {
+        //     $('#feedbackMessage').html(``);
+        //   }
+        // });
+    $('#uploadToolkit').submit((e) => {
+        e.preventDefault();
 
+        
+        const Name = $('#Name').val(); 
+        const Toolkits = $('#Toolkits')[0].files[0];
+
+        if(Name == ""){
+          const emptyError = '<div class="col-lg-12 alert alert-danger"> Book Name is required</div>';
+          $('#errorFeedBack').html(emptyError);
+        }
+        if(Toolkits == ""){
+          const emptyError = '<div class="col-lg-12 alert alert-danger"> Upload Book </div>';
+          $('#errorFeedBack').html(emptyError);
+        }
+          
+        
+        const fd = new FormData();
+        
+        fd.append('Name',Name);
+        fd.append('Toolkits',Toolkits);
+
+        $.ajax({
+            type: 'POST',
+            url:'/api/v1/toolkits',
+            processData: false,
+            contentType: false,
+            cache: false,
+            data:fd,
+            beforeSend: () => {
+            $('#feedbackMessage').html(`<div class="alert alert-info">Submitting Book...</div>`);
+          },
+            success: (data) => {
+              $('#feedbackMessage').html(`<div class="alert alert-info">${data.message}</div>`);    
+            },
+            error: (jqXHR,textStatus,errorThrown) => {
+            console.log(errorThrown);
+            
+            return;
+          },
+            complete: () => {
+
+              $('#Name').val("");
+              $('#Toolkits').val("");
+              
+
+              $('#feedbackMessage').html(``);
+          }
+        });
+    })
+    
+})
+    </script>
  
 </body>
 

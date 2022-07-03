@@ -80,6 +80,10 @@ const Indicators = db.define('indicator', {
     p_code:{
         type: sequelize.STRING,
         allowNull: false
+    },
+    date:{
+        type: sequelize.DATE,
+        allowNull: false
     }
 })
 
