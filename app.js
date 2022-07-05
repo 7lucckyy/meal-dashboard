@@ -48,11 +48,14 @@ app.get('/home', (req, res)=>{
 app.get('/impact', (req, res)=>{
     res.render('widget');
 });
-app.get('/add-mov', (req, res)=>{
+app.get('/upload-mov', (req, res)=>{
     res.render('mov');
 });
 app.get('/upload-toolkits', (req, res)=>{
     res.render('toolkits');
+});
+app.get('/view-toolkits', (req, res)=>{
+    res.render('view-toolkits');
 });
 app.get('/create-user', (req, res)=>{
     res.render('register');
