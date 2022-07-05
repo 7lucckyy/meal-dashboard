@@ -64,8 +64,6 @@
     Chart.defaults.borderColor = "#000000";
 
 
-    // Worldwide Sales Chart
-    
 
 
     // Salse & Revenue Chart

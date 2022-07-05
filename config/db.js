@@ -7,7 +7,7 @@ if(process.env.DB_ENV == 'development'){
     dialect: 'postgres'
 })
 }else{
-  db  = new Sequelize(process.env.DATABASE_URL, {
+  db  = new sequelize(process.env.DATABASE_URL, {
       dialectOptions: {
         ssl: {
           require: true,

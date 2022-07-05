@@ -151,17 +151,18 @@
             var myChart1 = new Chart(ctx1, {
                 type: "bar",
                 data: {
-                    labels: ["Target", "Reach", ],
+                    labels: ["Case management"],
                     datasets: [{
-                            label: "No. of Children Case Managed",
-                            data: [detailsData.target[0].total_target,  detailsData.reached[0].total_reached],
+                            label: "Target",
+                            data: [detailsData.target[0].total_target],
                             backgroundColor: "rgba(235, 22, 22, .7)"
                         },
                         {
-                            label: "No of UASC reached",
-                            data: [detailsData.total_boys[0].total_boys, detailsData.total_girls[0].total_girls],
+                            label: "Reached, ",
+                            data: [detailsData.reached[0].total_reached],
                             backgroundColor: "rgba(235, 22, 22, .5)"
                         }
+                        
                     ]
                     },
                 options: {
