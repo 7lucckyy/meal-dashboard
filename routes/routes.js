@@ -14,6 +14,8 @@ const postToolkits = require('../controller/toolkits/postToolkits');
 const fileUpload = require('../Middleware/uploadFile');
 const postMovs = require('../controller/mov/postMovs');
 const uploadMovs = require('../Middleware/uploadMovs');
+const getAllproject = require('../controller/project/getAllproject');
+const viewIndicators = require('../controller/indicators/viewIndicators');
 
 
 const router = express.Router()
@@ -28,6 +30,8 @@ router.post('/create-indicator', postIndicators);
 router.get('/get-indicators', getIndicators);
 router.post('/toolkits',  fileUpload, postToolkits);
 router.post('/movs', uploadMovs, postMovs);
+router.get('/projects', getAllproject);
+router.get('/view-indicators', viewIndicators);
 
 
 

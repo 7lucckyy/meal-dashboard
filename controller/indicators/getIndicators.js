@@ -37,7 +37,10 @@ module.exports = async (req, res)=>{
         const getTotalPWDs = await db.query('SELECT sum(total_pwd) AS total_pwds FROM Indicators', {
             type: sequelize.QueryTypes.SELECT
         })
-        const getTotalCaregivers = await db.query('SELECT sum(male + female) AS total_caregivers FROM Indicators', {
+        const getTotalmales = await db.query('SELECT sum(male) AS total_males FROM Indicators', {
+            type: sequelize.QueryTypes.SELECT
+        })
+        const getTotalFemales = await db.query('SELECT sum(female) AS total_females FROM Indicators', {
             type: sequelize.QueryTypes.SELECT
         })
         if(!getTarget){
@@ -55,7 +58,8 @@ module.exports = async (req, res)=>{
                 total_boys: getTotalBoys,
                 total_girls: getTotalGirls,
                 total_pwds: getTotalPWDs,
-                total_caregivers: getTotalCaregivers
+                total_males: getTotalmales,
+                total_females: getTotalFemales
                }
             })
         }

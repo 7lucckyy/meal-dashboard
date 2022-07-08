@@ -20,59 +20,30 @@
                 <div class="row g-4">
                     <div class="col-12">
                         <div class="bg-secondary rounded h-100 p-4">
-                            <h6 class="mb-4">CP Indicators Table</h6>
+                            <h5 class="mb-4 text-center"><u>Indicators Table accross Projects</u></h5>
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th scope="col">Indicator Code</th>
-                                            <th scope="col">Indicator Name</th>
+                                            <th scope="col">S/N</th>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Code</th>
                                             <th scope="col">Target</th>
-                                            <th scope="col">Reached</th>
-                                            <th scope="col">Boys</th>
-                                            <th scope="col">Girls</th>
+                                            <th scope="col">0-5 Boys</th>
+                                            <th scope="col">0-5 Girls</th>
+                                            <th scope="col">6-12 Boys</th>
+                                            <th scope="col">6-12 Girls</th>
+                                            <th scope="col">13-17 Boys</th>
+                                            <th scope="col">13-17 Girls</th>
                                             <th scope="col">Male</th>
                                             <th scope="col">Female</th>
-                                            <th scope="col">Beneficiary Status</th>
-                                            <th scope="col">Disability Status</th>
+                                            <th scope="col">PWDs</th>
+                                  
+                                            <th scope="col">Project Code</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>2.2.1</td>
-                                            <td>No. of UASC placed in alt care</td>
-                                            <td>300</td>
-                                            <td>50</td>
-                                            <td>30</td>
-                                            <td>0</td>
-                                            <td>0</td>
-                                            <td>IDPs</td>
-                                            <td>None</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>1.2.2</td>
-                                            <td>No. of UASC benefiting from </td>
-                                            <td>300</td>
-                                            <td>50</td>
-                                            <td>30</td>
-                                            <td>0</td>
-                                            <td>0</td>
-                                            <td>IDPs</td>
-                                            <td>None</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">3</th>
-                                            <td>3.2.1</td>
-                                            <td>No. of seperated children case managed</td>
-                                            <td>300</td>
-                                            <td>50</td>
-                                            <td>30</td>
-                                            <td>0</td>
-                                            <td>0</td>
-                                            <td>IDPs</td>
-                                            <td>None</td>
+                                    <tbody id="tableBody">
+                                        
                                         </tr>
                                     </tbody>
                                 </table>
@@ -108,6 +79,88 @@
 
     <!-- Template Javascript -->
    <script src="/js/main.js"></script>
+   <script>
+      $(() => {
+
+        
+getReportData();
+});
+function deleteReportData(reportId)
+{
+$.ajax({
+  type:'DELETE',
+  url: `/test/api/reports/?report-id=${reeportId}`,
+  dataType: 'json',
+  headers:{
+    'Authorization':localStorage.getItem("jwt-token")
+  },
+  beforeSend: () => {
+    $('#deleteReportButton').prop("disabled",true);  
+  },
+  success: (data) => {
+    getReportData();
+  },
+  error: (jqXHR,textStatus,errorThrown) => {
+    const responseJSON = jqXHR.responseJSON;
+    const message = `
+      <div class='alert alert-danger'>
+        ${responseJSON.message}  
+      </div>
+    `;
+    $('#feedbackMessage').html(message).fadeIn(500).fadeOut(4000);
+  },
+  complete: () => {
+      $('#deleteReportButton').prop("disabled",false);  
+  }
+});
+}
+function getReportData()
+
+{
+  $.ajax({
+    type:'GET',
+    url: '/api/v1/view-indicators',
+    dataType: 'json',
+    success: (data) => {
+        const tableData = data.data;
+       
+       
+        let row = ``;
+        let counter = 1
+        tableData.forEach(element => {
+            row = `
+                ${row}
+                <tr>
+                    <td>${counter}</td>
+                    <td>${element.name}</td>
+                    <td>${element.code}</td>
+                    <td>${element.target}</td>
+                   
+                    <td>${element.child_boys}</td>
+                    <td>${element.child_girls}</td>
+                    <td>${element.adole_boys}</td>
+                    <td>${element.adole_girls}</td>
+                    <td>${element.adult_boys}</td>
+                    <td>${element.adult_girls}</td>
+                    <td>${element.male}</td>
+                    <td>${element.female}</td>
+                    <td>${element.total_pwd}</td>
+                    <td>${element.p_code}</td>
+                    
+                </tr>
+            `;    
+            counter += 1;
+        });
+
+        $('#tableBody').html(row);
+      
+    },
+    error: (jqXHR,textStatus,errorThrown) => {
+        const reponseJSON = jqXHR.responseJSON;
+    }
+  });
+}
+   </script>
 </body>
 
 </html>

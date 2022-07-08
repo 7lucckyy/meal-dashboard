@@ -169,6 +169,31 @@
                     responsive: true
                 }
             });
+
+            var ctx2 = $("#salse-revenue").get(0).getContext("2d");
+            var myChart2 = new Chart(ctx2, {
+                type: "line",
+                data: {
+                    labels: ["Children Reached Segeration by Gender", "Total number of caregivers Reached"],
+                    datasets: [{
+                            label: "Boys and Girls Reached",
+                            data: [detailsData.total_girls[0].total_girls, detailsData.total_boys[0].total_boys],
+                            backgroundColor: "rgba(235, 22, 22, .7)",
+                            fill: true
+                        },
+                        {
+                            label: "Caregivers and PWDs Reached",
+                            data: [detailsData.total_pwds[0].total_pwds, detailsData.total_caregivers[0].total_caregivers],
+                            backgroundColor: "rgba(235, 22, 22, .5)",
+                            fill: true
+                        }
+                    ]
+                    },
+                options: {
+                    responsive: true
+                }
+            });
+     
            
           },
           error: (jqXHR,textStatus,errorThrown) => {

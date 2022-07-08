@@ -34,6 +34,10 @@ const Projects = db.define('project_info', {
     p_code: {
         type: sequelize.STRING,
         allowNull: false
+    },
+    thematic:{
+        type: sequelize.STRING,
+        allowNull: false
     }
 })
 

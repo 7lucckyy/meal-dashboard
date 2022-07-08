@@ -54,8 +54,8 @@ app.get('/upload-mov', (req, res)=>{
 app.get('/upload-toolkits', (req, res)=>{
     res.render('toolkits');
 });
-app.get('/view-toolkits', (req, res)=>{
-    res.render('view-toolkits');
+app.get('/project', (req, res)=>{
+    res.render('view-project');
 });
 app.get('/create-user', (req, res)=>{
     res.render('register');

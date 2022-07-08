@@ -14,8 +14,8 @@
                 <div class="row vh-50 bg-secondary rounded align-items-center justify-content-center mx-0">
                     <div class="col-md-6 text-center mb-20">
                         <h1 class="text-warning mt-20"></h1>
-                        <h3>NHF Consortium Dashboard</h3>
-                        <h6>This Dashboard Measures level of indicators accross the project components</h6>
+                        <h3>Project Dashboard</h3>
+                        <h6>This Dashboard Shows all Ogoing Projects</h6>
                     </div>
                 </div>
             </div>
@@ -24,60 +24,23 @@
                 <div class="row g-4">
                     <div class="col-12">
                         <div class="bg-secondary rounded h-100 p-4">
-                            <h6 class="mb-4">CP Indicators Table</h6>
+                            <h4 class="mb-4 text-center">List of Projects</h4>
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th scope="col">Indicator Code</th>
-                                            <th scope="col">Indicator Name</th>
-                                            <th scope="col">Target</th>
-                                            <th scope="col">Reached</th>
-                                            <th scope="col">Boys</th>
-                                            <th scope="col">Girls</th>
-                                            <th scope="col">Male</th>
-                                            <th scope="col">Female</th>
-                                            <th scope="col">Beneficiary Status</th>
-                                            <th scope="col">Disability Status</th>
+                                            <tr>
+                                                <th scope="col">S/N</th>
+                                                <th scope="col">Project Title</th>
+                                                <th scope="col">Duration</th>
+                                                <th scope="col">Location</th>
+                                                <th scope="col">Thematic</th>
+                                                <th scope="col">Project Code</th>
+                                            </tr>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>2.2.1</td>
-                                            <td>No. of UASC placed in alt care</td>
-                                            <td>300</td>
-                                            <td>50</td>
-                                            <td>30</td>
-                                            <td>0</td>
-                                            <td>0</td>
-                                            <td>IDPs</td>
-                                            <td>None</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>1.2.2</td>
-                                            <td>No. of UASC benefiting from </td>
-                                            <td>300</td>
-                                            <td>50</td>
-                                            <td>30</td>
-                                            <td>0</td>
-                                            <td>0</td>
-                                            <td>IDPs</td>
-                                            <td>None</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">3</th>
-                                            <td>3.2.1</td>
-                                            <td>No. of seperated children case managed</td>
-                                            <td>300</td>
-                                            <td>50</td>
-                                            <td>30</td>
-                                            <td>0</td>
-                                            <td>0</td>
-                                            <td>IDPs</td>
-                                            <td>None</td>
-                                        </tr>
+                                    <tbody id="tableBody">
+                                       
                                     </tbody>
                                 </table>
                             </div>
@@ -110,10 +73,12 @@
     <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
     <!-- Template Javascript -->
-   <script src="/public/js/nhf-dashboard.js"></script>
+   <script src="/js/nhf-dashboard.js"></script>
 </body>
 <script>
     $(() => {
+
+        
       getReportData();
     });
     function deleteReportData(reportId)
@@ -149,7 +114,7 @@
     {
         $.ajax({
           type:'GET',
-          url: '/api/v1/toolkits',
+          url: '/api/v1/projects',
           dataType: 'json',
           success: (data) => {
               const tableData = data.data;
@@ -160,22 +125,17 @@
                       ${row}
                       <tr>
                           <td>${counter}</td>
-                          <td>${element.name}</td>
-                          <td>${element.path}</td>
-                          <td>
-                              <a href="${element.path}" class="btn btn-info btn-large"><i class="fa fa-globe"></i> Download</a>
-                             
-                          </td>
-                          <td>
-                              <a href="${element.path}" class="btn btn-info btn-large"><i class="fa fa-globe"></i> View</a>
-                             
-                          </td>
+                          <td>${element.title}</td>
+                          <td>${element.locations}</td>
+                          <td>${element.duration}</td>
+                          <td>${element.thematic}</td>
+                          <td>${element.p_code}</td>
                       </tr>
                   `;    
                   counter += 1;
               });
   
-              $('#reportTableBody').html(row);
+              $('#tableBody').html(row);
           },
           error: (jqXHR,textStatus,errorThrown) => {
               const reponseJSON = jqXHR.responseJSON;

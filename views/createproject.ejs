@@ -30,6 +30,15 @@
                             <label for="floatingInput">Project Duration</label>
                         </div>
                         <div class="form-floating mb-3">
+                            <h6 class="tetx-align">Project Thematic</h6>
+                            <select class="form-select form-select-sm mb-3" aria-label=".form-select-sm example" id="selectThematic" name="selectThematic">
+                                <option selected>Education</option>
+                                <option value="1">Child Protection</option>
+                                <option value="2">Nutrition</option>
+                                <option value="3">Livelihood</option>
+                            </select>
+                        </div>
+                        <div class="form-floating mb-3">
                             <input type="tetx" class="form-control" id="location" placeholder="locations">
                             <label for="floatingInput">Project Locations</label>
                         </div>
@@ -66,7 +75,7 @@
     <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
     <!-- Template Javascript -->
-    <script src="/public/js/main.js"></script>
+    <script src="/js/main.js"></script>
    <script>
     $(document).ready(() => {
         
@@ -79,9 +88,8 @@
             const locations = $('#location').val();
             const donor = $('#donor').val();
             const project_code = $('#projectCode').val();
+            const thematic = $('select[name="selectThematic"] option:selected').text();
             
-           
-    
             if(title == '' || duration == '' || project_code == ''){
                 const message = `<div class="col-lg-12 mb-4 alert alert-danger">
                     <p>Project title is required</p>
@@ -96,7 +104,8 @@
                 duration,
                 locations,
                 donor,
-                project_code
+                project_code,
+                thematic
             }
             
             $.ajax({

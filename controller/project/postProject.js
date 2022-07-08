@@ -8,7 +8,7 @@ const Projects = require('../../model/project-infos');
 
 module.exports = async (req, res)=>{
     try {
-        let { title, duration, locations, donor, project_code} = req.body;
+        let { title, duration, locations, donor, project_code, thematic} = req.body;
 
 
             if(validator.isEmpty(title)){
@@ -49,7 +49,14 @@ module.exports = async (req, res)=>{
                     Description: "You must provide Donor"
                 })
             }
-            
+            if(validator.isEmpty(thematic)){
+                return res.status(400).json({
+                    Success: false,
+                    Message: "Donor or Source of funding is required",
+                    Description: "You must provide Donor"
+                })
+            }
+
         try {
             
             const createProjects = await Projects.create({
@@ -59,6 +66,7 @@ module.exports = async (req, res)=>{
                 locations: locations,
                 donor:    donor,
                 p_code: project_code, 
+                thematic: thematic,
                 is_deleted: 0
             })
             
