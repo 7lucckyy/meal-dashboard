@@ -102,7 +102,7 @@
                                 <div class="mb-3">
                                     <label for="floatingSelect mb-6">Beneficiary Status</label>
                                 
-                                    <select class="form-select" id="beneficiary_status"
+                                    <select class="form-select" id="beneficiary_status" name="beneficiary_status"
                                         aria-label="Floating label select example">
                                        
                                         <option selected>IDPs</option>
@@ -170,6 +170,7 @@
             const female = $('#female').val();
             const total_pwd = $('#total_pwd').val();
             const project_code = $('#projectCode').val();
+            const beneficiary_status = $('select[name="beneficiary_status"] option:selected').text();
             
             const indicatorData = {
                 code,
@@ -184,7 +185,8 @@
                 male,
                 female,
                 total_pwd,
-                project_code
+                project_code,
+                beneficiary_status
             }
             $.ajax({
                 type: 'POST',

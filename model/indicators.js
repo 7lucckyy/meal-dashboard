@@ -63,7 +63,7 @@ const Indicators = db.define('indicator', {
 
     },
     beneficiary_status:{
-        type: sequelize.BIGINT,
+        type: sequelize.STRING,
         allowNull: true
     },
     total_pwd:{
