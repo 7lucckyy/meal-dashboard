@@ -148,7 +148,7 @@ module.exports = async (req, res)=>{
                 female:    female,
                 project_code: project_code,
                 total_pwd: total_pwd,
-                beneficiary_status:    0,
+                beneficiary_status:    beneficiary_status,
                 is_deleted: 0,
                 date: date
               
