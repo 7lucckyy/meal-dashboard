@@ -1,8 +1,5 @@
 
 const express = require('express')
-
-
-
 const bodyParser = require('body-parser');
 
 const postUser = require('../controller/user/postUser');
@@ -16,14 +13,12 @@ const postMovs = require('../controller/mov/postMovs');
 const uploadMovs = require('../Middleware/uploadMovs');
 const getAllproject = require('../controller/project/getAllproject');
 const viewIndicators = require('../controller/indicators/viewIndicators');
-
-
 const router = express.Router()
 router.use(bodyParser.json())
 
 
 
-router.post('/register',  postUser);
+router.post('/register', postUser);
 router.post('/login', postLogin);
 router.post('/create', postProjectInfo);
 router.post('/create-indicator', postIndicators);
