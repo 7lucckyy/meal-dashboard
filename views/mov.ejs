@@ -30,7 +30,7 @@
                                         <input class="form-control bg-dark" type="file" id="formFile">
                                     </div>
                             
-                                <div class="col-lg-12 mx-auto mb-2 mt-3" id="FeedBackMessage"></div>
+                                <div class="col-lg-12 mx-auto mb-2 mt-3" id="FeedBackmessage"></div>
                                 <button type="submit" id="uploadToolkits" class="btn btn-primary py-3 w-100 mb-4">Create Project</button>
                                 <!-- <p class="text-center mb-0">Already have an Account? <a href="">Sign In</a></p> -->
                             </div>
@@ -55,34 +55,34 @@
     <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
     <!-- Template Javascript -->
-    <script src="/public/js/main.js"></script>
+    <script src="/js/main.js"></script>
     <script>
         $(document).ready(() => {
-        $.ajax({
-          type: 'GET',
-          url: '/avocad0/api/dashboard.php',
-          dataType: 'json',
-          headers: {
-            'Authorization': localStorage.getItem('jwt-token-avocad0')
-          },
-          beforeSend: () => {
-            $('#feedbackMessage').html(`<div class="alert alert-info">Fetching user data...</div>`);
-          },
-          success: (data) => {
-            const author = data.data;
-            console.log(author);
-            $('#fullName').html(`<label for="fullName">Full Name:</label> <b>${author.name}</b>`);
-            $('#email').html(`<label for="Fullname">Email:</label> <b>${author.email}</b>`);
-            $('#earnings').html(`<label for="earnings">Earnings:</label> <b>${author.earnings}<b>`);
-          },
-          error: (jqXHR,textStatus,errorThrown) => {
-            location.href = '/avocad0/public/login.html';
-            return;
-          },
-          complete: () => {
-            $('#feedbackMessage').html(``);
-          }
-        });
+        // $.ajax({
+        //   type: 'GET',
+        //   url: '/avocad0/api/dashboard.php',
+        //   dataType: 'json',
+        //   headers: {
+        //     'Authorization': localStorage.getItem('jwt-token-avocad0')
+        //   },
+        //   beforeSend: () => {
+        //     $('#feedbackmessage').html(`<div class="alert alert-info">Fetching user data...</div>`);
+        //   },
+        //   success: (data) => {
+        //     const author = data.data;
+        //     console.log(author);
+        //     $('#fullName').html(`<label for="fullName">Full Name:</label> <b>${author.name}</b>`);
+        //     $('#email').html(`<label for="Fullname">Email:</label> <b>${author.email}</b>`);
+        //     $('#earnings').html(`<label for="earnings">Earnings:</label> <b>${author.earnings}<b>`);
+        //   },
+        //   error: (jqXHR,textStatus,errorThrown) => {
+        //     location.href = '/avocad0/public/login.html';
+        //     return;
+        //   },
+        //   complete: () => {
+        //     $('#feedbackmessage').html(``);
+        //   }
+        // });
     $('#submitBook').submit((e) => {
         e.preventDefault();
 
@@ -130,10 +130,10 @@
             cache: false,
             data:fd,
             beforeSend: () => {
-            $('#feedbackMessage').html(`<div class="alert alert-info">Submitting Book...</div>`);
+            $('#feedbackmessage').html(`<div class="alert alert-info">Submitting Book...</div>`);
           },
             success: (data) => {
-              $('#feedbackMessage').html(`<div class="alert alert-info">${data.message}</div>`);    
+              $('#feedbackmessage').html(`<div class="alert alert-info">${data.message}</div>`);    
             },
             complete: () => {
 
@@ -145,7 +145,7 @@
               $('#uploadBook').val("");
               $('#uploadCover').val("");
 
-              $('#feedbackMessage').html(``);
+              $('#feedbackmessage').html(``);
           }
         });
     })

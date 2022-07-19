@@ -17,8 +17,8 @@
                     <div class="col-sm-12 col-xl-12">
                         <div class="bg-secondary rounded h-100 p-4">
                             <h6 class="mb-4">Indicators Information</h6>
-                            <form action="" method="post" id="createIndicator">
-                                <div class="mb-3">
+                            <form id="createIndicator">
+                                <!-- <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Project Code</label>
                                     <input type="text" class="form-control" id="projectCode"
                                         aria-describedby="emailHelp">
@@ -43,7 +43,7 @@
                                     <input type="text" class="form-control" id="target"
                                         aria-describedby="emailHelp" placeholder="Numbers Only">
                                    
-                                </div>
+                                </div> -->
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Number of Boys 0-6</label>
                                     <input type="text" class="form-control" id="cboys"
@@ -113,7 +113,7 @@
                                     
                                 </div>
                                 <div class="col-lg-12 mx-auto mb-2 mt-3" id="FeedBackmessage"></div>
-                                <button type="submit" id="submitIndicator" class="btn btn-primary py-3 w-100 mb-4">Create Indicator</button>
+                                <button type="submit" id="submitIndicator" class="btn btn-primary py-3 w-100 mb-4">Update Indicator</button>
                             </div>
                             </form>
                         </div>
@@ -151,15 +151,35 @@
     <script src="/js/main.js"></script>
 
    <script>
-    $(document).ready(() => {
-        
-        $('#createIndicator').submit((e) => {
+    $(() => {
+       
+    //Check if the blog-id is given 
+    let url = new URL(location.href);
+    let urlParams = url.search;
+    
+    if(!urlParams)
+    {
+      location.href = "/edit-indicator";
+    }
+
+    let indicatorId = urlParams.substr(14);
+    
+    $.ajax({
+      type: 'GET',
+      url: `/api/v1/get-indicator/${indicatorId}`,
+      success: (data) => {
+        loadData(data.data);
+      },
+      error: (jqXHR,textStatus,errorThrown) => {
+        const responseJSON = jqXHR.responseJSON;
+        const message = `<div class="alert alert-danger">${responseJSON.message}</div>`
+        $('#FeedBackmessage').html(message);
+      },
+    });
+
+  $('#createIndicator').submit((e) => {
             e.preventDefault();
     
-            
-            const code = $('#code').val();
-            const name = $('#name').val();
-            const target = $('#target').val();
             const child_boys = $('#cboys').val();
             const child_girls = $('#cgirls').val();
             const adole_boys = $('#adoleboys').val();
@@ -169,35 +189,31 @@
             const male = $('#male').val();
             const female = $('#female').val();
             const total_pwd = $('#total_pwd').val();
-            const project_code = $('#projectCode').val();
             const beneficiary_status = $('select[name="beneficiary_status"] option:selected').text();
             
             const indicatorData = {
-                code,
-                name,
-                target,
-                child_boys,
-                child_girls,
-                adole_boys,
-                adole_girls,
-                adult_boys,
-                adult_girls,
-                male,
-                female,
-                total_pwd,
-                project_code,
-                beneficiary_status
+                child_boys:child_boys,
+                child_girls:child_girls,
+                adole_boys: adole_boys,
+                adole_girls: adole_girls,
+                adult_boys: adult_boys,
+                adult_girls: adult_girls,
+                male: male,
+                female: female,
+                total_pwd: total_pwd,
+                beneficiary_status: beneficiary_status
             }
             $.ajax({
-                type: 'POST',
+                type: 'PUT',
                 contentType: 'application/json',
-                url:'/api/v1/create-indicator',
+                url:`/api/v1/update-indicator/${indicatorId}`,
                 data:JSON.stringify(indicatorData),
                 dataType:'json',
                 processData: false,
                 beforeSend: () => {
+                    
                     const message = `<div class="alert alert-info">
-                    <p>Please wait while creating...</p>
+                    <p>Please wait while updating...</p>
                     </div>`;
                     $('#FeedBackmessage').html(message);
                     $('#submitIndicator').prop('disabled',true);
@@ -205,10 +221,11 @@
                 success: (indicatorData) => {
                     // localStorage.setItem("jwt-token-scon", data.token);
                     const message = `<div class="alert alert-success">
-                       <p> Indicator Created successfully</p>
+                       <p> Indicator Updated successfully</p>
                     </div>`;
                     $('#FeedBackmessage').html(message);
                     // window.location.href = '/home';
+
                     
                 },
                 error: (jqXHR,textStatus,errorThrown) => {
@@ -233,12 +250,25 @@
                     }
                 },
                 complete: () => {
-                    $('#loginButton').prop('disabled',false);
+                    $('#submitIndicator').prop('disabled',false);
                 }
             });
         })
-        
+           
     })
+    function loadData(data){
+            $('#cboys').val(data.child_boys);
+            $('#cgirls').val(data.child_girls);
+            $('#adoleboys').val(data.adole_boys);
+            $('#adolegirls').val(data.adole_girls);
+            $('#adultboys').val(data.adult_boys);
+            $('#adultgirls').val(data.adult_girls);
+            $('#male').val(data.male);
+            $('#female').val(data.female);
+            $('#total_pwd').val(data.total_pwd);
+            $('#projectCode').val(data.project_code);
+            $('select[name="beneficiary_status"] option:selected').text(data.beneficiary_status);
+  }
    </script>
 </body>
 

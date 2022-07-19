@@ -136,7 +136,7 @@
           url: '/api/v1/get-indicators',
           dataType: 'json',
           beforeSend: () => {
-            $('#feedbackMessage').html(`<div class="alert alert-info">Fetching Chart data...</div>`);
+            $('#feedbackmessage').html(`<div class="alert alert-info">Fetching Chart data...</div>`);
           },
           success: (data) => {
             const detailsData = data.data;
@@ -201,7 +201,7 @@
             return;
           },
           complete: () => {
-            $('#feedbackMessage').html(``);
+            $('#feedbackmessage').html(``);
            
           }
         });

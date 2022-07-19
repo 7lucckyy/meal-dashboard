@@ -40,7 +40,7 @@
                             <input type="password" class="form-control" id="password" placeholder="Password">
                             <label for="floatingPassword">Password</label>
                         </div>
-                        <div class="col-lg-12 mx-auto mb-2 mt-3" id="FeedBackMessage"></div>
+                        <div class="col-lg-12 mx-auto mb-2 mt-3" id="FeedBackmessage"></div>
                         <button id="createUser" type="submit" class="btn btn-primary py-3 w-100 mb-4">Create User</button>
                     </div>
                 </div>
@@ -83,7 +83,7 @@
                     <p>Email Address is required</p>
                     <p>Password is required</p>
                     </div>`;
-                    $('#FeedBackMessage').html(message)
+                    $('#FeedBackmessage').html(message)
                 return;
             }
             const data = {
@@ -105,34 +105,34 @@
                     const message = `<div class="alert alert-info">
                     <p>Please wait while authenticating...</p>
                     </div>`;
-                    $('#FeedBackMessage').html(message);
+                    $('#FeedBackmessage').html(message);
                     $('#loginButton').prop('disabled',true);
                 },
                 success: (data) => {
                     const message = `<div class="alert alert-success">
                     <p>Redirecting user...</p>
                     </div>`;
-                    $('#FeedBackMessage').html(message);
+                    $('#FeedBackmessage').html(message);
                     window.location.href = '/home';
                     
                 },
                 error: (jqXHR,textStatus,errorThrown) => {
                     
                     const responseJson = jqXHR.responseJSON;
-                    $('#FeedBackMessage').html("");
+                    $('#FeedBackmessage').html("");
                     if (!responseJson) {
                         const message = `<div class="alert alert-danger">
                         <p>Email Address is required</p>
                         <p>Password is required</p>
                         </div>`;
-                        $('#FeedBackMessage').html(message)
+                        $('#FeedBackmessage').html(message)
                         return;
                     }
                     else{
                         const message = `<div class="alert alert-danger">
                         ${responseJson.message}
                         </div>`;
-                        $('#FeedBackMessage').html(message)
+                        $('#FeedBackmessage').html(message)
                         return;
                     }
                 },

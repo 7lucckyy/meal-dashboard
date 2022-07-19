@@ -13,22 +13,22 @@ module.exports = async (req, res)=>{
 
             if(validator.isEmpty(name)){
                 return res.status(400).json({
-                    Success: false,
-                    Message: "Oops Name fill is required",
+                    success: false,
+                    message: "Oops Name fill is required",
                     Description: "Name cannot be blank "
                 })
             }
             if(validator.isNumeric(name)){
                 return res.status(400).json({
-                    Success: false,
-                    Message: "name address can not be numbers",
+                    success: false,
+                    message: "name address can not be numbers",
                     Description: "name address cannot be "
                 })  
               }
             if(validator.isEmpty(email)){
                 return res.status(400).json({
-                    Success: false,
-                    Message: "Oops Email Address is required",
+                    success: false,
+                    message: "Oops Email Address is required",
                     
                     Description: "Email fill cannot be blank"
                 })
@@ -36,23 +36,23 @@ module.exports = async (req, res)=>{
             
             if(validator.isEmail(email)==false){
                 return res.status(400).json({
-                    Successs: false,
-                    Message: "Invalid email fomart",
+                    successs: false,
+                    message: "Invalid email fomart",
                     Description: "Email address e.g exmaple@email.com"
                 })
             }
             
             if(validator.isEmpty(password)){
                 return res.status(400).json({
-                    Success: false,
-                    Message: "Password is required",
+                    success: false,
+                    message: "Password is required",
                     Description: "You must provide password"
                 })
             }
             if(password.length < 8){
                 return res.status(400).json({
-                    Success: false,
-                    Message: "Password can not be less 8 characters",
+                    success: false,
+                    message: "Password can not be less 8 characters",
                     Description: "Password length is to short"
                 })
             }
@@ -70,19 +70,19 @@ module.exports = async (req, res)=>{
             })
             
             return res.status(201).json({
-            msg: "Created Successfully"
+            message: "Created successfully"
             })
         } catch (e) {
             
             console.log(e);
             return res.status(500).json({
-                msg: "Could not complete operation"
+                message: "Could not complete operation"
             });    
         }
         
     } catch (e) {
         return res.status(400).json({
-            msg: "The following request bodies are required: name, email, role, password"
+            message: "The following request bodies are required: name, email, role, password"
         });
     }
 }

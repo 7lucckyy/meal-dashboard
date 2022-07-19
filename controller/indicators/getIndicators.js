@@ -6,14 +6,14 @@ const db = require('../../config/db');
 
 module.exports = async (req, res)=>{
     try {
-        let IndicatorCode = req.body.code;
+        
         const getTotalReached = await db.query('SELECT sum(child_boys + child_girls + adole_boys + adole_girls + adult_boys + adult_girls + male + female) AS total_reached FROM indicators', {
             type: sequelize.QueryTypes.SELECT
         })
         if(!getTotalReached){
             return res.status(400).json({
-               Success: false,
-               Message: "Cannot get total reached check your indicators table",
+               success: false,
+               message: "Cannot get total reached check your indicators table",
                Description: "Kindly Cross check your indicators table and project code carefully" 
             })
         }
@@ -22,8 +22,8 @@ module.exports = async (req, res)=>{
         })
         if(!getTarget){
             return res.status(400).json({
-               Success: false,
-               Message: "Cannot get total reached check your indicators table",
+               success: false,
+               message: "Cannot get total reached check your indicators table",
                Description: "Kindly Cross check your indicators table and project code carefully" 
             })
         }
@@ -45,8 +45,8 @@ module.exports = async (req, res)=>{
         })
         if(!getTarget){
             return res.status(400).json({
-               Success: false,
-               Message: "Cannot get total reached check your indicators table",
+               success: false,
+               message: "Cannot get total reached check your indicators table",
                Description: "Kindly Cross check your indicators table and project code carefully" 
             })
         }

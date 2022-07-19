@@ -59,12 +59,15 @@ app.get('/project', (req, res)=>{
 });
 app.get('/create-user', (req, res)=>{
     res.render('register');
+});
+app.get('/edit-indicator', (req, res)=>{
+    res.render('edit-indicator');
 })
 
 //Database
 try {
     db.authenticate();
-    console.log('Database Connected Successfully');
+    console.log('Database Connected successfully');
 } catch (e) {
     console.log('Something went wrong');
     console.log(e);

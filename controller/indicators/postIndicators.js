@@ -15,89 +15,88 @@ module.exports = async (req, res)=>{
 
             if(validator.isEmpty(project_code)){
                 return res.status(400).json({
-                    Success: false,
-                    Message: "Opps Project Code cant be blank"
+                    success: false,
+                    message: "Opps Project Code cant be blank"
                 })
             }
             
 
             if(validator.isEmpty(code)){
                 return res.status(400).json({
-                    Success: false,
-                    Message: "Oops Indicator code fill is required",
+                    success: false,
+                    message: "Oops Indicator code fill is required",
                     Description: "Indicator code cannot be blank "
                 })
             }
             if(validator.isEmpty(name)){
                 return res.status(400).json({
-                    Success: false,
-                    Message: "name can not be blank",
+                    success: false,
+                    message: "name can not be blank",
                     Description: "name is required"
                 })  
               }
             
             if(validator.isNumeric(target)==false){
                 return res.status(400).json({
-                    Success: false,
-                    Message: "child_boys must be number not string",
+                    success: false,
+                    message: "child_boys must be number not string",
                     Description: "Kindly put your child_boys in numbers"
                 })
             }
             if(validator.isNumeric(child_boys)==false){
                 return res.status(400).json({
-                    Success: false,
-                    Message: "child_boys must be number not string",
+                    success: false,
+                    message: "child_boys must be number not string",
                     Description: "Kindly put your child_boys in numbers"
                 })
             }
             if(validator.isEmpty(child_girls)){
                 return res.status(400).json({
-                    Success: false,
-                    Message: "Oops child_girls is required",
+                    success: false,
+                    message: "Oops child_girls is required",
                     Description: "child_girls cannot be blank"
                 })
             }
             if(validator.isNumeric(adole_boys)==false){
                 return res.status(400).json({
-                    Success: false,
-                    Message: "adole_boys must be number not string",
+                    success: false,
+                    message: "adole_boys must be number not string",
                     Description: "Kindly put your adole_boys in numbers"
                 })
             }
             if(validator.isEmpty(adole_girls)){
                 return res.status(400).json({
-                    Success: false,
-                    Message: "Oops adole_girls is required",
+                    success: false,
+                    message: "Oops adole_girls is required",
                     Description: "adole_girls cannot be blank"
                 })
             }
             if(validator.isNumeric(adult_boys)==false){
                 return res.status(400).json({
-                    Success: false,
-                    Message: "adult_boys must be number not string",
+                    success: false,
+                    message: "adult_boys must be number not string",
                     Description: "Kindly put your adult_boys in numbers"
                 })
             }
             if(validator.isEmpty(adult_girls)){
                 return res.status(400).json({
-                    Success: false,
-                    Message: "Oops adult_girls is required",
+                    success: false,
+                    message: "Oops adult_girls is required",
                     
                     Description: "adult_girls cannot be blank"
                 })
             }
             if(validator.isNumeric(male)==false){
                 return res.status(400).json({
-                    Success: false, 
-                    Message: "male must be number not string",
+                    success: false, 
+                    message: "male must be number not string",
                     Description: "Kindly put your male in numbers"
                 })
             }
             if(validator.isEmpty(female)){
                 return res.status(400).json({
-                    Success: false,
-                    Message: "Oops female is required",
-                    
+                    success: false,
+                    message: "Oops female is required",
                     Description: "female cannot be blank"
                 })
             }
@@ -105,8 +104,8 @@ module.exports = async (req, res)=>{
 
             if(validator.isEmpty(total_pwd)){
                 return res.status(400).json({
-                    Successs: false,
-                    Message: "beneficiary status is required",
+                    successs: false,
+                    message: "beneficiary status is required",
                     Description: "Must be Aplha-numeric"
                 })
             }
@@ -119,8 +118,8 @@ module.exports = async (req, res)=>{
             })
             if(!AuthencateProject){
                 return res.status(400).json({
-                    Success: false,
-                    Message: "Invalid Project Code",
+                    success: false,
+                    message: "Invalid Project Code",
                     Description: "Project Code Must be provided"
                 })
             }
@@ -156,13 +155,13 @@ module.exports = async (req, res)=>{
             })
             
             return res.status(201).json({
-            msg: "Indicator Created Successfully"
+            message: "Indicator Created successfully"
             })
         } catch (e) {
            
             console.log(e);
             return res.status(500).json({
-                msg: "Could not complete operation"
+                message: "Could not complete operation"
             });    
         }
         
@@ -170,7 +169,7 @@ module.exports = async (req, res)=>{
         console.log(e);
         // return res.status(400).json({
             
-        //     msg: "The Indicator information must be filled"
+        //     message: "The Indicator information must be filled"
         // });
     }
 }

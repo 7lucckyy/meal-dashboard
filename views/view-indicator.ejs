@@ -107,7 +107,7 @@ $.ajax({
         ${responseJSON.message}  
       </div>
     `;
-    $('#feedbackMessage').html(message).fadeIn(500).fadeOut(4000);
+    $('#feedbackmessage').html(message).fadeIn(500).fadeOut(4000);
   },
   complete: () => {
       $('#deleteReportButton').prop("disabled",false);  
@@ -135,7 +135,6 @@ function getReportData()
                     <td>${element.name}</td>
                     <td>${element.code}</td>
                     <td>${element.target}</td>
-                   
                     <td>${element.child_boys}</td>
                     <td>${element.child_girls}</td>
                     <td>${element.adole_boys}</td>
@@ -146,6 +145,11 @@ function getReportData()
                     <td>${element.female}</td>
                     <td>${element.total_pwd}</td>
                     <td>${element.p_code}</td>
+
+                    <td>
+                      <a href='/edit-indicator?indicator-id=${element.id}' class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> Update</a>   
+                    </td>
+                   
                     
                 </tr>
             `;    

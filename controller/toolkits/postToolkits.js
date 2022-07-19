@@ -13,15 +13,15 @@ module.exports = async (req, res)=>{
 
             if(validator.isEmpty(name)){
                 return res.status(400).json({
-                    Success: false,
-                    Message: "Oops Name is Required",
+                    success: false,
+                    message: "Oops Name is Required",
                     Description: "Name must be fill cant be blank"
                 })
             }
             if(validator.isNumeric(name)){
                 return res.status(400).json({
-                    Success: false,
-                    Message: "Name cannot be numbers"
+                    success: false,
+                    message: "Name cannot be numbers"
                 })
             }
             
@@ -43,13 +43,13 @@ module.exports = async (req, res)=>{
         
                     await Transaction.commit();
                         return res.status(201).json({
-                        msg: "Created Successfully"
+                        message: "Created successfully"
                     })    
                 } catch (e) {
                     console.log(e);
                     await Transaction.rollback()             
                     return res.status(500).json({
-                        Success: false, 
+                        success: false, 
                         message: "Internal Server error",
                         description: "Something went wrong"
                     })  
@@ -58,7 +58,7 @@ module.exports = async (req, res)=>{
 
                console.log(e);
                return res.status(500).json({
-                Success: false, 
+                success: false, 
                 message: "Internal Server error",
                 description: "Something went wrong"
             })
@@ -66,7 +66,7 @@ module.exports = async (req, res)=>{
     } catch (e) {
         console.log(e);
        return res.status(400).json({
-           Success: false,
+           success: false,
            message: "File name and type are required"
        }) 
     }

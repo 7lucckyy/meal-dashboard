@@ -11,14 +11,14 @@ module.exports = async (req, res)=>{
         })
         if(!getAllProjectDetails){
             return res.status(400).json({
-                Success: false,
-                Message: "No project found!",
+                success: false,
+                message: "No project found!",
             })
         }
         if(getAllProjectDetails){
             return res.status(200).json({
-                Success: true,
-                Message: "Data Retrived Successfully",
+                success: true,
+                message: "Data Retrived successfully",
                 data: getAllProjectDetails
             })
         }

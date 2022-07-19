@@ -51,7 +51,7 @@
                             <label for="floatingInput">Project Code</label>
                         </div>
                        
-                        <div class="col-lg-12 mx-auto mb-2 mt-3" id="FeedBackMessage"></div>
+                        <div class="col-lg-12 mx-auto mb-2 mt-3" id="FeedBackmessage"></div>
                         <button type="submit" id="submitProject" class="btn btn-primary py-3 w-100 mb-4">Create Project</button>
                         <!-- <p class="text-center mb-0">Already have an Account? <a href="">Sign In</a></p> -->
                     </div>
@@ -96,7 +96,7 @@
                     <p>Project duration is required</p>
                     <p>Project code is required</p>
                     </div>`;
-                    $('#FeedBackMessage').html(message)
+                    $('#FeedBackmessage').html(message)
                 return;
             }
             const projectData = {
@@ -119,35 +119,35 @@
                     const message = `<div class="alert alert-info">
                     <p>Please wait.....</p>
                     </div>`;
-                    $('#FeedBackMessage').html(message);
+                    $('#FeedBackmessage').html(message);
                     $('#loginButton').prop('disabled',true);
                 },
                 success: (projectData) => {
                     // localStorage.setItem("jwt-token-scon", data.token);
                     const message = `<div class="alert alert-success">
-                       <p> Project Created Successfully</p>
+                       <p> Project Created successfully</p>
                     </div>`;
-                    $('#FeedBackMessage').html(message);
+                    $('#FeedBackmessage').html(message);
                     // window.location.href = '/home';
                     
                 },
                 error: (jqXHR,textStatus,errorThrown) => {
                     
                     const responseJson = jqXHR.responseJSON;
-                    $('#FeedBackMessage').html("");
+                    $('#FeedBackmessage').html("");
                     if (!responseJson) {
                         const message = `<div class="alert alert-danger">
                         <p>Project Information is required</p>
                         <p>Opps somethong went wrong</p>
                         </div>`;
-                        $('#FeedBackMessage').html(message)
+                        $('#FeedBackmessage').html(message)
                         return;
                     }
                     else{
                         const message = `<div class="alert alert-danger">
                         ${responseJson.message}
                         </div>`;
-                        $('#FeedBackMessage').html(message)
+                        $('#FeedBackmessage').html(message)
                         return;
                     }
                 },

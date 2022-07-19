@@ -1,7 +1,6 @@
 
-const express = require('express')
-const bodyParser = require('body-parser');
-
+const express = require('express');
+const router = express.Router();
 const postUser = require('../controller/user/postUser');
 const postLogin = require('../controller/user/loginAuth');
 const postProjectInfo = require('../controller/project/postProject');
@@ -13,8 +12,12 @@ const postMovs = require('../controller/mov/postMovs');
 const uploadMovs = require('../Middleware/uploadMovs');
 const getAllproject = require('../controller/project/getAllproject');
 const viewIndicators = require('../controller/indicators/viewIndicators');
-const router = express.Router()
-router.use(bodyParser.json())
+const updateIndictaors = require('../controller/indicators/updateIndictaors');
+const getOneIndicator = require('../controller/indicators/getOneIndicator');
+const bodyParser = require('body-parser');
+
+router.use(bodyParser.json());
+
 
 
 
@@ -27,6 +30,8 @@ router.post('/toolkits',  fileUpload, postToolkits);
 router.post('/movs', uploadMovs, postMovs);
 router.get('/projects', getAllproject);
 router.get('/view-indicators', viewIndicators);
+router.put('/update-indicator/:id', updateIndictaors);
+router.get('/get-indicator/:id', getOneIndicator)
 
 
 

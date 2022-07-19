@@ -13,22 +13,22 @@ module.exports = async (req, res)=>{
 
             if(validator.isEmpty(title)){
                 return res.status(400).json({
-                    Success: false,
-                    Message: "Oops Project title fill is required",
+                    success: false,
+                    message: "Oops Project title fill is required",
                     Description: "Project title cannot be blank "
                 })
             }
             if(validator.isNumeric(title)){
                 return res.status(400).json({
-                    Success: false,
-                    Message: "Title address can not be numbers",
+                    success: false,
+                    message: "Title address can not be numbers",
                     Description: "title must be alpha-numeric"
                 })  
               }
             if(validator.isEmpty(duration)){
                 return res.status(400).json({
-                    Success: false,
-                    Message: "Oops Duration is required",
+                    success: false,
+                    message: "Oops Duration is required",
                     
                     Description: "Duration cannot be blank"
                 })
@@ -36,23 +36,23 @@ module.exports = async (req, res)=>{
             
             if(validator.isEmpty(locations)){
                 return res.status(400).json({
-                    Successs: false,
-                    Message: "project location is required",
+                    successs: false,
+                    message: "project location is required",
                     Description: "Must be Aplha-numeric"
                 })
             }
             
             if(validator.isEmpty(donor)){
                 return res.status(400).json({
-                    Success: false,
-                    Message: "Donor or Source of funding is required",
+                    success: false,
+                    message: "Donor or Source of funding is required",
                     Description: "You must provide Donor"
                 })
             }
             if(validator.isEmpty(thematic)){
                 return res.status(400).json({
-                    Success: false,
-                    Message: "Donor or Source of funding is required",
+                    success: false,
+                    message: "Donor or Source of funding is required",
                     Description: "You must provide Donor"
                 })
             }
@@ -71,19 +71,19 @@ module.exports = async (req, res)=>{
             })
             
             return res.status(201).json({
-            msg: "Created Successfully"
+            message: "Created successfully"
             })
         } catch (e) {
            
             console.log(e);
             return res.status(500).json({
-                msg: "Could not complete operation"
+                message: "Could not complete operation"
             });    
         }
         
     } catch (e) {
         return res.status(400).json({
-            msg: "The project information must be filled"
+            message: "The project information must be filled"
         });
     }
 }
