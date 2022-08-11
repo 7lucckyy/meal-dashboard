@@ -5,10 +5,13 @@ const multer = require('multer');
 const validator = require('validator');
 const Toolkits = require('../../model/toolkits');
 const fileUpload = require('../../Middleware/uploadFile');
+// const cloudinary = require('../../Middleware/cloudinary');x`
+const {uploadToS3 } = require('../../Middleware/s3')
 
 module.exports = async (req, res)=>{
     try {
         let name = req.body.name;
+        let files = req.files;
         let documentName = req.files.filename[0];
 
             if(validator.isEmpty(name)){
@@ -26,6 +29,17 @@ module.exports = async (req, res)=>{
             }
             
             try {
+                const result = await uploadToS3(documentName.path);
+                // const fileUrl = result.secure_url;
+                console.log(result);
+
+                // if(!result){
+                //     return res.status(400).json({
+                //         success: false,
+                //         message: "failed to upload file to file_server"
+                //     })
+                // }
+
                 let ToolID = uuidv4();
             
                 const Transaction = await db.transaction()
@@ -33,7 +47,7 @@ module.exports = async (req, res)=>{
                     const createToolkit = await Toolkits.create({
                         id: ToolID,
                         name: name,
-                        path: documentName.path,
+                        path: fileUrl,
                         is_deleted: 0,
                     })
                     
