@@ -3,8 +3,9 @@ const { v4: uuidv4 } = require('uuid');
 const db = require('../../config/db')
 const multer = require('multer');
 const validator = require('validator');
-const Toolkits = require('../../model/toolkits');
-const fileUpload = require('../../Middleware/uploadMovs');
+
+const fileUpload = require('../../Middleware/uploadFile');
+const cloudinary = require('../../Middleware/cloudinary');
 
 module.exports = async (req, res)=>{
     try {
