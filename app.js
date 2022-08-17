@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const morgan = require('morgan');
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 50000;
 const db = require('./config/db');
 const router = require('./routes/routes');
 const app = express();
