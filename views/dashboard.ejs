@@ -14,7 +14,9 @@
                         <h1 class="text-warning mt-20"></h1>
                         <h3>Street Child Dashboard</h3>
                         <h6>This Dashboard Measures level of indicators accross program thematic</h6>
+                        <h6 id="feedbackmessage"></h6>
                     </div>
+                    
                 </div>
             </div>
             <div class="container-fluid pt-4 px-4">
@@ -76,18 +78,7 @@
                             <canvas id="salse-revenue"></canvas>
                         </div>
                     </div>
-                    <div class="col-sm-12 col-xl-6">
-                        <div class="bg-secondary rounded h-100 p-4">
-                            <h6 class="mb-4">Nutrition</h6>
-                            <canvas id="bar-chart"></canvas>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-xl-6">
-                        <div class="bg-secondary rounded h-100 p-4">
-                            <h6 class="mb-4">Livelihood</h6>
-                            <canvas id="line-chart"></canvas>
-                        </div>
-                    </div>
+                    
                     <div class="col-sm-12 col-xl-6">
                         <div class="bg-secondary rounded h-100 p-4">
                             <h6 class="mb-4">Reached Segregation by Gender</h6>
@@ -139,13 +130,13 @@
             $('#feedbackmessage').html(`<div class="alert alert-info">Fetching Chart data...</div>`);
           },
           success: (data) => {
-            const detailsData = data.data;
+            const detailsData = data;
             console.log(detailsData);
-            $('#totalBoys').html(`${detailsData.total_boys[0].total_boys}`);
-            $('#totalGirls').html(`${detailsData.total_girls[0].total_girls}`);
-            $('#totalCaregivers').html(`${detailsData.total_females[0].total_females}`);
-            $('#totalReached').html(`${detailsData.reached[0].total_reached}`);
-            $('#totalPWD').html(`${detailsData.total_pwds[0].total_pwds}`);
+            $('#totalBoys').html(`${detailsData.data.boy}`);
+            $('#totalGirls').html(`${detailsData.data.girl}`);
+            $('#totalCaregivers').html(`${detailsData.data.female}`);
+            $('#totalReached').html(`${detailsData.data.male}`);
+            $('#totalPWD').html(`${detailsData.data.pwd}`);
 
             var ctx1 = $("#worldwide-sales").get(0).getContext("2d");
             var myChart1 = new Chart(ctx1, {
@@ -154,13 +145,22 @@
                     labels: ["Case management"],
                     datasets: [{
                             label: "Target",
-                            data: [detailsData.target[0].total_target],
+                            data: [detailsData.data.target],
                             backgroundColor: "rgba(235, 22, 22, .7)"
                         },
                         {
-                            label: "Reached, ",
-                            data: [detailsData.reached[0].total_reached],
-                            backgroundColor: "rgba(235, 22, 22, .5)"
+                            label: "Reached",
+                            data: [detailsData.data.reached],
+                            backgroundColor: "rgba(235, 22, 24, .5)"
+                        },
+                        {
+                            label: "0-5 Boys Reached",
+                            data: [detailsData.data.boy],
+                            backgroundColor: "rgba(235, 22, 26, .5)"
+                        },{
+                            label: "0-5 Girls Reached",
+                            data: [detailsData.data.girl],
+                            backgroundColor: "rgba(235, 22, 27, .5)"
                         }
                         
                     ]
@@ -177,13 +177,13 @@
                     labels: ["Children Reached Segeration by Gender", "Total number of caregivers Reached"],
                     datasets: [{
                             label: "Boys and Girls Reached",
-                            data: [detailsData.total_girls[0].total_girls, detailsData.total_boys[0].total_boys],
+                            data: [detailsData.data.child_girl, detailsData.data.child_boy],
                             backgroundColor: "rgba(235, 22, 22, .7)",
                             fill: true
                         },
                         {
                             label: "Male and Females caregiver Reached",
-                            data: [detailsData.total_females[0].total_females, detailsData.total_males[0].total_males],
+                            data: [detailsData.data.adult_boy, detailsData.data.adult_girl],
                             backgroundColor: "rgba(235, 22, 22, .5)",
                             fill: true
                         }
@@ -193,7 +193,56 @@
                     responsive: true
                 }
             });
-     
+            
+           
+
+    // Single Bar Chart
+
+
+            // Pie Chart
+            var ctx5 = $("#pie-chart").get(0).getContext("2d");
+            var myChart5 = new Chart(ctx5, {
+                type: "pie",
+                data: {
+                    labels: ["Girls", "Boys", "Female", "Male"],
+                    datasets: [{
+                        backgroundColor: [
+                            "rgba(235, 22, 22, .7)",
+                            "rgba(235, 22, 22, .6)",
+                            "rgba(235, 22, 22, .5)",
+                            "rgba(235, 22, 22, .4)",
+                            
+                        ],
+                        data: [detailsData.data.girl, detailsData.data.boy, detailsData.data.female, detailsData.data.male]
+                    }]
+                },
+                options: {
+                    responsive: true
+                }
+            });
+
+
+            // Doughnut Chart
+            var ctx6 = $("#doughnut-chart").get(0).getContext("2d");
+            var myChart6 = new Chart(ctx6, {
+                type: "doughnut",
+                data: {
+                    labels: ["IDPs", "Host Community", "Returnee"],
+                    datasets: [{
+                        backgroundColor: [
+                            "rgba(235, 22, 22, .7)",
+                            "rgba(235, 22, 22, .6)",
+                            "rgba(235, 22, 22, .5)"
+                        
+                        ],
+                        data: [detailsData.data.male, detailsData.data.female, detailsData.data.pwds]
+                    }]
+                },
+                options: {
+                    responsive: true
+                }
+            });
+
            
           },
           error: (jqXHR,textStatus,errorThrown) => {

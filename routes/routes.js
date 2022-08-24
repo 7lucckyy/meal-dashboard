@@ -14,7 +14,7 @@ const viewIndicators = require('../controller/indicators/viewIndicators');
 const updateIndictaors = require('../controller/indicators/updateIndictaors');
 const getOneIndicator = require('../controller/indicators/getOneIndicator');
 const bodyParser = require('body-parser');
-const {uploadToS3} = require('../Middleware/s3')
+const getResult = require('../controller/indicators/getResult');
 
 router.use(bodyParser.json());
 
@@ -26,12 +26,13 @@ router.post('/login', postLogin);
 router.post('/create', postProjectInfo);
 router.post('/create-indicator', postIndicators);
 router.get('/get-indicators', getIndicators);
-router.post('/toolkits',  fileUpload, uploadToS3, postToolkits);
+router.post('/toolkits',  fileUpload, postToolkits);
 router.post('/movs', fileUpload, postMovs);
 router.get('/projects', getAllproject);
 router.get('/view-indicators', viewIndicators);
 router.put('/update-indicator/:id', updateIndictaors);
 router.get('/get-indicator/:id', getOneIndicator)
+router.get('/fetch-data/:id', getResult);
 
 
 

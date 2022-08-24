@@ -7,15 +7,19 @@ const db = require('./config/db');
 const router = require('./routes/routes');
 const app = express();
 
+
 //Middlewares
 app.use(morgan('combined'));
 app.use('/api/v1', router);
+
 
 
 app.use(express.urlencoded({extended: true})); 
 app.use(express.json());
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
+
+
 
 app.get('/', (req, res)=> {
     res.render('signin');
@@ -24,7 +28,7 @@ app.get('/', (req, res)=> {
 app.get('/dashboard', (req, res)=>{
     res.render('dashboard');
 });
-app.get('/nhf-dashboard', (req, res)=>{
+app.get('/sub-dashboards', (req, res)=>{
     res.render('nhf-dashboard');
 });
 app.get('/giz-dashboard', (req, res)=>{
@@ -74,5 +78,5 @@ try {
 }
 
 app.listen(PORT, ()=>{
-    console.log("Server Running at 5000");
+    console.log(`Server Running at 5000`);
 });
