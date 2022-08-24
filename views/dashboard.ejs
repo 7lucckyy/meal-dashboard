@@ -131,11 +131,11 @@
           },
           success: (data) => {
             const detailsData = data;
-            console.log(detailsData);
+
             $('#totalBoys').html(`${detailsData.data.boy}`);
             $('#totalGirls').html(`${detailsData.data.girl}`);
             $('#totalCaregivers').html(`${detailsData.data.female}`);
-            $('#totalReached').html(`${detailsData.data.male}`);
+            $('#totalReached').html(`${detailsData.data.reached}`);
             $('#totalPWD').html(`${detailsData.data.pwd}`);
 
             var ctx1 = $("#worldwide-sales").get(0).getContext("2d");
