@@ -131,7 +131,7 @@
           },
           success: (data) => {
             const detailsData = data;
-
+            console.log(detailsData.data);
             $('#totalBoys').html(`${detailsData.data.boy}`);
             $('#totalGirls').html(`${detailsData.data.girl}`);
             $('#totalCaregivers').html(`${detailsData.data.female}`);
