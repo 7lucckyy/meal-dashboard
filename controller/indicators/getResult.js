@@ -52,11 +52,13 @@ module.exports = async (req, res)=>{
         data.pwds += item.total_pwd;
         data.target += item.target;
         data.reached += item.adole_boys + item.adole_girls + item.child_boys + item.child_girls + item.adult_boys + item.adult_girls + item.male + item.female
-        
+        console.log(data);
        })
+       console.log(data);
        return res.status(200).json({
         message: "Retrieved Successfully",
         data: data
+
        })
      
     } catch (e) {
